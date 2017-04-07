@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Npgsql">
-      <HintPath>D:\Program Files (x86)\PostgreSQL\Npgsql\bin\Npgsql.dll</HintPath>
+      <HintPath>D:\Progs\PostGress SQL\bin\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
