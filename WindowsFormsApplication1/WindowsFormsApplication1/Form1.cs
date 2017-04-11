@@ -22,8 +22,10 @@ namespace WindowsFormsApplication1
         {
 
             // Specify connection options and open an connection
+            Console.Write("Password: ");
+            string password = Console.Read();
             NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;User Id=postgres;" +
-                                    "Password=3791054qW;Database=project3;");
+                                    "Password=" + password + ";Database=project3;");
             conn.Open();
             
 
