@@ -15,6 +15,23 @@ namespace WindowsFormsApplication1
     {
         public JobsGraph()
         {
+            // TO DO:
+            // -  RELOAD BUTTON
+            // -  ENABLE/DISABLE SERIES -> toggle true/false box    |  |    <->    | X |
+            // -  SET MULTIPLIERS       -> insert integer in box    |   1   |    <->   |   3   |    <->    |   X   |
+            // -  SET TIME DOMAIN (1:00 - 24:00 wordt bijvorobeeld 13:00 - 15:00)   |.|-----------|.....| 
+
+            // Show lines in GUI
+            Boolean ShowFietsdiefstal = true;
+            Boolean ShowStraatroof = true;
+
+            // Multipliers in GUI
+            int MultiplierFietsdiefstal = 1;
+            int MultiplierStraatroof = 3;
+
+
+            
+
             // CREATING CONNECTION
 
             // Jonah :  string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
@@ -35,48 +52,55 @@ namespace WindowsFormsApplication1
             
             InitializeComponent();
 
-// opened (fietsdiefstal)     
+            // opened (fietsdiefstal)     
 
-            con.Open();
-            FDcommand = new SqlCommand("select uur, count(waarde) from fietsdiefstal GROUP BY uur ORDER BY uur ASC;", con); // [Xvalue, Yvalue] = output query
-            FDreader = FDcommand.ExecuteReader();
-
-            while (FDreader.Read())
+            if (ShowFietsdiefstal == true)
             {
-                string output = FDreader.GetValue(0).ToString();
-                var xvalue = GetInt(output);
 
-                output = FDreader.GetValue(1).ToString();
-                var yvalue = GetInt(output);
+                con.Open();
+                FDcommand = new SqlCommand("select uur, count(waarde) from fietsdiefstal GROUP BY uur ORDER BY uur ASC;", con); // [Xvalue, Yvalue] = output query
+                FDreader = FDcommand.ExecuteReader();
 
-                chart1.Series["Fietsdiefstal"].Points.AddXY(xvalue, yvalue);
-                chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00";
-                //ADD VALUE TO POINT: chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = xvalue.ToString() + ":00";
+                while (FDreader.Read())
+                {
+                    string output = FDreader.GetValue(0).ToString();
+                    var xvalue = GetInt(output);
+
+                    output = FDreader.GetValue(1).ToString();
+                    var yvalue = GetInt(output);
+
+                    chart1.Series["Fietsdiefstal"].Points.AddXY(xvalue, yvalue * MultiplierFietsdiefstal);
+                    chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00";
+                    //ADD VALUE TO POINT: chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = xvalue.ToString() + ":00";
+                }
+                con.Close();
             }
-            con.Close();
-// closed           
+            // closed           
 
             // Straatroof queries
-// opened
-            con.Open();
-            SRcommand = new SqlCommand("select uur, count(waarde) from straatroof GROUP BY uur ORDER BY uur ASC;", con);
-            SRreader = SRcommand.ExecuteReader();
-
-            while (SRreader.Read())
+            // opened
+            if (ShowStraatroof == true)
             {
-                string output = SRreader.GetValue(0).ToString();
-                var xvalue = GetInt(output);
+                con.Open();
+                SRcommand = new SqlCommand("select uur, count(waarde) from straatroof GROUP BY uur ORDER BY uur ASC;", con);
+                SRreader = SRcommand.ExecuteReader();
 
-                output = SRreader.GetValue(1).ToString();
-                var yvalue = GetInt(output);
+                while (SRreader.Read())
+                {
+                    string output = SRreader.GetValue(0).ToString();
+                    var xvalue = GetInt(output);
 
-                chart1.Series["Straatroof"].Points.AddXY(xvalue, yvalue);
-                chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00";
+                    output = SRreader.GetValue(1).ToString();
+                    var yvalue = GetInt(output);
 
-                //ADD VALUE TO POINT:  chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].Label = xvalue.ToString() + ":00";
+                    chart1.Series["Straatroof"].Points.AddXY(xvalue, yvalue * MultiplierStraatroof);
+                    chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00";
+
+                    //ADD VALUE TO POINT:  chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].Label = xvalue.ToString() + ":00";
+                }
+
+                con.Close();
             }
-
-            con.Close();
 // closed            
         }
 
