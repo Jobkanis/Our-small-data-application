@@ -19,7 +19,9 @@ namespace WindowsFormsApplication1
 
             // Jonah :  string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Job :    string databaseplace = "C:\Users\jobka\Documents\GitHub\Project3\WindowsFormsApplication1\WindowsFormsApplication1\Official_Database.mdf";
-            string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
+            // Oguzhan :string databaseplace = "C:\\Users\\Oguzhan\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
+
+            string databaseplace = "C:\\Users\\Oguzhan\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
 
             SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + databaseplace + ";Integrated Security=True");
             
@@ -49,7 +51,6 @@ namespace WindowsFormsApplication1
 
                 chart1.Series["Fietsdiefstal"].Points.AddXY(xvalue, yvalue);
                 chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00";
-                Console.WriteLine(chart1.Series["Fietsdiefstal"].Points.Count());
                 //ADD VALUE TO POINT: chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = xvalue.ToString() + ":00";
             }
             con.Close();
