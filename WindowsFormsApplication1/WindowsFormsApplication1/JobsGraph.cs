@@ -38,12 +38,11 @@ namespace WindowsFormsApplication1
             con.Open();
             FDcommand = new SqlCommand("select uur, count(waarde) from fietsdiefstal GROUP BY uur ORDER BY uur ASC;", con); // [Xvalue, Yvalue] = output query
             FDreader = FDcommand.ExecuteReader();
-            chart1.Series.Add("Fietsdiefstal");
 
             while (FDreader.Read())
             {
                 string output = FDreader.GetValue(0).ToString();
-                var xvalue = output.ToString() + ":00";
+                var xvalue = GetInt(output);
 
                 output = FDreader.GetValue(1).ToString();
                 var yvalue = GetInt(output);
@@ -58,12 +57,11 @@ namespace WindowsFormsApplication1
             con.Open();
             SRcommand = new SqlCommand("select uur, count(waarde) from straatroof GROUP BY uur ORDER BY uur ASC;", con);
             SRreader = SRcommand.ExecuteReader();
-            chart1.Series.Add("Straatroof");
 
             while (SRreader.Read())
             {
                 string output = SRreader.GetValue(0).ToString();
-                var xvalue = output.ToString() + ":00";
+                var xvalue = GetInt(output);
 
                 output = SRreader.GetValue(1).ToString();
                 var yvalue = GetInt(output);
