@@ -48,6 +48,9 @@ namespace WindowsFormsApplication1
                 var yvalue = GetInt(output);
 
                 chart1.Series["Fietsdiefstal"].Points.AddXY(xvalue, yvalue);
+                chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00";
+                Console.WriteLine(chart1.Series["Fietsdiefstal"].Points.Count());
+                //ADD VALUE TO POINT: chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = xvalue.ToString() + ":00";
             }
             con.Close();
 // closed           
@@ -67,6 +70,9 @@ namespace WindowsFormsApplication1
                 var yvalue = GetInt(output);
 
                 chart1.Series["Straatroof"].Points.AddXY(xvalue, yvalue);
+                chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00";
+
+                //ADD VALUE TO POINT:  chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].Label = xvalue.ToString() + ":00";
             }
 
             con.Close();
