@@ -19,20 +19,64 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
+        public string CreateQuerie(string tabel)
+        {
+            Console.WriteLine(SelectedDisticts);
+            string WhereString = "";
+
+            foreach (int dist in SelectedDisticts)
+            {
+                Console.WriteLine(dist);
+                if (WhereString == "")
+                {
+                    WhereString += " WHERE ";
+                }
+                else
+                {
+                    WhereString += " OR ";
+                }
+
+                WhereString += "District = 'district " + dist.ToString() + "' ";
+            }
+
+
+            string returnstring = "Select count(*) from " + tabel + WhereString + ";";
+
+            return returnstring;
+
+        }
+
         public bool ChangeDistrict(int district) // True = added, False = Removed
         {
+            foreach (int distr in SelectedDisticts)
+            {
+                Console.WriteLine(distr);
+            }
+
             if (SelectedDisticts.Find(x => x == district) == 0)
             {
+                Console.WriteLine("Added" + district);
                 SelectedDisticts.Add(district);
                 return false;
             }
             else
             {
+                Console.WriteLine("Removed" + district);
                 SelectedDisticts.Remove(district);
                 return true;
             }
 
         }
+
+        private void DrawGraph_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Getting query");
+            string query = CreateQuerie("fietsdiefstal");
+            Console.WriteLine(query);
+        }
+
+
+     //#######################################################################
 
         private void button_District1_Click_1(object sender, EventArgs e)
         {
@@ -137,12 +181,15 @@ namespace WindowsFormsApplication1
                 button_District12.BackColor = System.Drawing.SystemColors.Highlight;
             }
         }
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+
+        }
 
         private void Locations_Load(object sender, EventArgs e)
         {
 
         }
-
-
     }
 }
