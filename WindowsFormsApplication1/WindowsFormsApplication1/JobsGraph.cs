@@ -18,18 +18,21 @@ namespace WindowsFormsApplication1
             // TO DO:
             // -  RELOAD BUTTON
             // -  ENABLE/DISABLE SERIES -> toggle true/false box    |  |    <->    | X |
+            // -  Enable/Disable YasValues on graph -> toggle true/false box |   |    <->    | X |
             // -  SET MULTIPLIERS       -> insert integer in box    |   1   |    <->   |   3   |    <->    |   X   |
             // -  SET TIME DOMAIN (1:00 - 24:00 wordt bijvorobeeld 13:00 - 15:00)   |.|-----------|.....| 
-
+            // -  SHOW YVALUE ON GRAPH
             // Show lines in GUI
             Boolean ShowFietsdiefstal = true;
             Boolean ShowStraatroof = true;
 
             // Multipliers in GUI
             int MultiplierFietsdiefstal = 1;
-            int MultiplierStraatroof = 3;
+            int MultiplierStraatroof = 1;
 
-
+            // YValue on map
+            Boolean ShowYOnFietsdiefstal = false;
+            Boolean ShowYOnStraatroof = true;
 
 
             // CREATING CONNECTION
@@ -71,6 +74,10 @@ namespace WindowsFormsApplication1
 
                     chart1.Series["Fietsdiefstal"].Points.AddXY(xvalue, yvalue * MultiplierFietsdiefstal); // Add point to graph
                     chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00"; // Time shown underneath graph
+                    if (ShowYOnFietsdiefstal == true)
+                    {
+                        chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = yvalue.ToString();
+                    }
                     //ADD VALUE TO POINT: chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = xvalue.ToString() + ":00"; // comment on the graph
                 }
                 con.Close();
@@ -95,6 +102,10 @@ namespace WindowsFormsApplication1
 
                     chart1.Series["Straatroof"].Points.AddXY(xvalue, yvalue * MultiplierStraatroof);
                     chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00";
+                    if (ShowYOnFietsdiefstal == true)
+                    {
+                        chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].Label = yvalue.ToString();
+                    }
                     //ADD VALUE TO POINT:  chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].Label = xvalue.ToString() + ":00";
                 }
 
