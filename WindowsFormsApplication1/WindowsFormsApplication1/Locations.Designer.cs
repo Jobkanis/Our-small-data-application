@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Location_Graphs
+    partial class Locations
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Locations
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Location_Graphs";
+            this.ClientSize = new System.Drawing.Size(508, 362);
+            this.Name = "Locations";
+            this.Text = "Locations";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

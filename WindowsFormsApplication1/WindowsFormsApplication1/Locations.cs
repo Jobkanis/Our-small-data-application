@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Location_Graphs : Form
+    public partial class Locations : Form
     {
-        public Location_Graphs()
+        public Locations()
         {
             InitializeComponent();
         }
