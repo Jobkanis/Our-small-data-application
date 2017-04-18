@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
         {
             // Jonah :  string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Job :    string databaseplace = "C:\Users\jobka\Documents\GitHub\Project3\WindowsFormsApplication1\WindowsFormsApplication1\Official_Database.mdf";
-            string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
+            string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename="+ databaseplace+ ";Integrated Security=True");
             SqlCommand cmd;
             SqlDataReader dr;
