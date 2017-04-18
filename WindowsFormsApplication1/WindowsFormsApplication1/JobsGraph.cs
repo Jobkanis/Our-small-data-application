@@ -30,17 +30,17 @@ namespace WindowsFormsApplication1
             int MultiplierStraatroof = 3;
 
 
-            
+
 
             // CREATING CONNECTION
 
             // Jonah :  string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-            // Job :    string databaseplace = "C:\Users\jobka\Documents\GitHub\Project3\WindowsFormsApplication1\WindowsFormsApplication1\Official_Database.mdf";
+            // Job : string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Oguzhan :string databaseplace = "C:\\Users\\Oguzhan\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
 
-            string databaseplace = "C:\\Users\\Oguzhan\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
+            string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf"; //Database location on computer
 
-            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + databaseplace + ";Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + databaseplace + ";Integrated Security=True"); //Connection with database
             
             // fietsdiefstal
             SqlCommand FDcommand; 
@@ -50,28 +50,28 @@ namespace WindowsFormsApplication1
             SqlCommand SRcommand; 
             SqlDataReader SRreader;
             
-            InitializeComponent();
+            InitializeComponent(); // Draw components
 
             // opened (fietsdiefstal)     
 
             if (ShowFietsdiefstal == true)
             {
 
-                con.Open();
+                con.Open(); //open database connection
                 FDcommand = new SqlCommand("select uur, count(waarde) from fietsdiefstal GROUP BY uur ORDER BY uur ASC;", con); // [Xvalue, Yvalue] = output query
-                FDreader = FDcommand.ExecuteReader();
+                FDreader = FDcommand.ExecuteReader(); // Make it readable
 
-                while (FDreader.Read())
+                while (FDreader.Read()) // Read query
                 {
                     string output = FDreader.GetValue(0).ToString();
-                    var xvalue = GetInt(output);
+                    var xvalue = GetInt(output); // Get int out of database: 0 if not convertable
 
                     output = FDreader.GetValue(1).ToString();
                     var yvalue = GetInt(output);
 
-                    chart1.Series["Fietsdiefstal"].Points.AddXY(xvalue, yvalue * MultiplierFietsdiefstal);
-                    chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00";
-                    //ADD VALUE TO POINT: chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = xvalue.ToString() + ":00";
+                    chart1.Series["Fietsdiefstal"].Points.AddXY(xvalue, yvalue * MultiplierFietsdiefstal); // Add point to graph
+                    chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00"; // Time shown underneath graph
+                    //ADD VALUE TO POINT: chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = xvalue.ToString() + ":00"; // comment on the graph
                 }
                 con.Close();
             }
@@ -95,7 +95,6 @@ namespace WindowsFormsApplication1
 
                     chart1.Series["Straatroof"].Points.AddXY(xvalue, yvalue * MultiplierStraatroof);
                     chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00";
-
                     //ADD VALUE TO POINT:  chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].Label = xvalue.ToString() + ":00";
                 }
 
