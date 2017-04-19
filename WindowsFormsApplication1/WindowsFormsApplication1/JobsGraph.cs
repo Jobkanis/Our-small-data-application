@@ -29,6 +29,7 @@ namespace WindowsFormsApplication1
             label1.Text = "";
             checkBox4.Enabled = false;
             checkBox3.Enabled = false;
+            
             // closed            
         }
         public Boolean chartvalues()
@@ -94,11 +95,13 @@ namespace WindowsFormsApplication1
                     string output = FDreader.GetValue(0).ToString();
                     var xvalue = GetInt(output); // Get int out of database: 0 if not convertable
 
+                    
                     output = FDreader.GetValue(1).ToString();
                     var yvalue = GetInt(output);
 
                     chart1.Series["Fietsdiefstal"].Points.AddXY(xvalue, yvalue * MultiplierFietsdiefstal); // Add point to graph
                     chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00"; // Time shown underneath graph
+                    
                     if (ShowYOnFietsdiefstal == true)
                     {
                         chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = yvalue.ToString();
@@ -131,6 +134,7 @@ namespace WindowsFormsApplication1
                     {
                         chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].Label = yvalue.ToString();
                     }
+                    
                     //ADD VALUE TO POINT:  chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].Label = xvalue.ToString() + ":00";
                 }
 
@@ -373,5 +377,27 @@ namespace WindowsFormsApplication1
             }
 
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            textBox2.Text = String.Empty;
+            textBox1.Text = String.Empty;
+            minimumtime = 1;
+            maximumtime = 24;
+            loadgraph();
+        }
+
+       
     }
 }
