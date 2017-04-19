@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -51,30 +51,30 @@
             // 
             this.chart1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.chart1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
-            chartArea7.AxisX.Interval = 1D;
-            chartArea7.AxisX.IsStartedFromZero = false;
-            chartArea7.AxisX.Maximum = 25D;
-            chartArea7.AxisX.Minimum = 0D;
-            chartArea7.AxisX.ScaleBreakStyle.MaxNumberOfBreaks = 1;
-            chartArea7.AxisX.ScaleView.MinSizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea7.AxisX.ScaleView.SizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea7.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea7);
+            chartArea2.AxisX.Interval = 1D;
+            chartArea2.AxisX.IsStartedFromZero = false;
+            chartArea2.AxisX.Maximum = 25D;
+            chartArea2.AxisX.Minimum = 0D;
+            chartArea2.AxisX.ScaleBreakStyle.MaxNumberOfBreaks = 1;
+            chartArea2.AxisX.ScaleView.MinSizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea2.AxisX.ScaleView.SizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.Cursor = System.Windows.Forms.Cursors.Default;
             this.chart1.Enabled = false;
             this.chart1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            legend7.Name = "Legend1";
-            this.chart1.Legends.Add(legend7);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(-41, 12);
             this.chart1.Name = "chart1";
-            series13.ChartArea = "ChartArea1";
-            series13.Legend = "Legend1";
-            series13.Name = "Fietsdiefstal";
-            series14.ChartArea = "ChartArea1";
-            series14.Legend = "Legend1";
-            series14.Name = "Straatroof";
-            this.chart1.Series.Add(series13);
-            this.chart1.Series.Add(series14);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Fietsdiefstal";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Straatroof";
+            this.chart1.Series.Add(series3);
+            this.chart1.Series.Add(series4);
             this.chart1.Size = new System.Drawing.Size(1001, 435);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -208,7 +208,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chart1);
             this.Name = "JobsGraph";
-            this.Text = "JobsGraph";
+            this.Text = "Hourly Chart";
             this.Load += new System.EventHandler(this.JobsGraph_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);

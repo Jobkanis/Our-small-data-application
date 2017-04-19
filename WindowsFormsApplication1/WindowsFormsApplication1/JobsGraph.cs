@@ -13,17 +13,15 @@ namespace WindowsFormsApplication1
 {
     public partial class JobsGraph : Form
     {
+        //All values that needs to load when form started (global values)
         Boolean ShowYOnFietsdiefstal = false;
         Boolean ShowYOnStraatroof = false;
-        bool chartHasLoaded = false;
         Boolean ShowFietsdiefstal = true;
         Boolean ShowStraatroof = true;
-        int ToggleYvalues = 0;
-
         int minimumtime = 1;
         int maximumtime = 24;
 
-        public JobsGraph()
+        public JobsGraph() //All stuff that needs to load when started (global values)
         {
             InitializeComponent();
             label1.Text = "";
@@ -31,16 +29,8 @@ namespace WindowsFormsApplication1
             checkBox3.Enabled = false;
             
             // closed            
-        }
-        public Boolean chartvalues()
-        {
-            return true;
-        }
-        public Boolean notchartvalues()
-        {
-            return false;
-        }
-        public void loadgraph()
+        }        
+        public void loadgraph() // Function for loading and reloading graph
         {
             // TO DO:
             // -  RELOAD BUTTON
@@ -65,8 +55,8 @@ namespace WindowsFormsApplication1
             // Jonah :  string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Job : string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Oguzhan :string databaseplace = "C:\\Users\\Oguzhan\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-
-            string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf"; //Database location on computer
+            // Dion: string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
+            string databaseplace = "C:\\Users\\Dionykn\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf"; //Database location on computer
 
             SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + databaseplace + ";Integrated Security=True"); //Connection with database
 
@@ -144,260 +134,148 @@ namespace WindowsFormsApplication1
                 label1.Text = "";
             }
 
-        }
-        private int GetInt(string value) // returns 0 if not returns int if it is
+        } 
+        private int GetInt(string value) // Converts string to int
         {
             int returnvalue;
             Boolean isNumeric = int.TryParse(value, out returnvalue);
             return returnvalue;
         }
-        private void chart1_Click(object sender, EventArgs e)
+        private void chart1_Click(object sender, EventArgs e)//When there is clicked on chart1
         {
 
-        }
-        //clear chart
-        private void button2_Click(object sender, EventArgs e)
-        {
-            foreach (var series in chart1.Series)
-            {
-                series.Points.Clear();
-            }
-            ShowYOnFietsdiefstal = false;
-            ShowYOnStraatroof = false;
-            ToggleYvalues = 0;
-            chartHasLoaded = false;
-            minimumtime = 1;
-            maximumtime = 24;
-        }
-        public void cleargraph()
-        {
-            foreach (var series in chart1.Series)
-            {
-                series.Points.Clear();
-            }
-            ShowYOnFietsdiefstal = false;
-            ShowYOnStraatroof = false;
-            ToggleYvalues = 0;
-            chartHasLoaded = false;
-            minimumtime = 1;
-            maximumtime = 24;
-        }
-        //y-as values
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (ToggleYvalues == 0)
-            {
-                ToggleYvalues += 1;
-                if (chartHasLoaded == true)
-                {
-                    ShowYOnFietsdiefstal = true;
-                    ShowYOnStraatroof = true;
-                    loadgraph();
-                }
-                else
-                {
-                    label1.Text = "First click load graph!";
-                }
-            }
-            else
-            {
-                ToggleYvalues -= 1;
-                if (chartHasLoaded == true)
-                {
-                    ShowYOnFietsdiefstal = false;
-                    ShowYOnStraatroof = false;
-                    loadgraph();
-                }
-                else
-                {
-                    label1.Text = "First click load graph!";
-                }
-            }
-        }
-
-        //show straatroof only
-        private void button4_Click(object sender, EventArgs e)
-        {
-            ShowFietsdiefstal = false;
-            ShowStraatroof = true;
-            loadgraph();
-            chartHasLoaded = true;
-            label1.Text = "";
-        }
-
-        //show fietsdiefstal only
-        private void button5_Click(object sender, EventArgs e)
-        {
-            ShowFietsdiefstal = true;
-            ShowStraatroof = false;
-            loadgraph();
-            chartHasLoaded = true;
-            label1.Text = "";
-        }
-
-        //show both datasets
-        private void button6_Click(object sender, EventArgs e)
-        {
-            ShowFietsdiefstal = true;
-            ShowStraatroof = true;
-            loadgraph();
-            chartHasLoaded = true;
-            label1.Text = "";
-        }
-        //minimum value
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        } 
+        private void textBox2_TextChanged(object sender, EventArgs e) //Minimum domain value input (live update)
         {
             TextBox minTextBox = (TextBox)sender;
             string minValue = minTextBox.Text;
             GetInt(minValue);
             minimumtime = GetInt(minValue);
             loadgraph();
-        }
-        //maximum value
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        }        
+        private void textBox1_TextChanged(object sender, EventArgs e) //Maximum domain value input (live update)
         {
             TextBox maxTextBox = (TextBox)sender;
 
-            string maxValue = maxTextBox.Text;
-            GetInt(maxValue);
-            maximumtime = GetInt(maxValue);
-            loadgraph();
+            string maxValue = maxTextBox.Text; 
+            GetInt(maxValue); //converts the input to a int
+            maximumtime = GetInt(maxValue); //sets the maximumtime to maxValue
+            loadgraph(); //refresh the graph
 
-        }
-        //straatroof check
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        }       
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)//Straatroof checkbox
         {
-            if (checkBox1.Checked) // check if straatroof is check
+            if (checkBox1.Checked) // check if straatroof is selected
             {
                 checkBox4.Enabled = true;
-                if (checkBox2.Checked) // check if fietsdiefstal is also checked
+                if (checkBox2.Checked) // Check if fietsendiefstal is also selected
                 {
                     ShowFietsdiefstal = true;
                     ShowStraatroof = true;
                     loadgraph();
-                    chartHasLoaded = true;
-                    label1.Text = "";
+                    
+                    label1.Text = "";//set warning string to none
                 }
-                else // if fietsdiefstal is not checked only view straatroof
+                else // If fietsdiefstal is not checked, only view straatroof
                 {
                     ShowFietsdiefstal = false;
                     ShowStraatroof = true;
                     loadgraph();
-                    chartHasLoaded = true;
-                    label1.Text = "";
+                    
+                    label1.Text = "";//set warning string to none
                 }
 
             }
-            else // if straatroof is not checked set showstraatroof to false
+            else // If straatroof is not checked set showstraatroof to false
             {
                 ShowStraatroof = false;
                 checkBox4.Enabled = false;
                 loadgraph();
             }
-        }
-        //fietsdiefstal check
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        }         
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)//Fietsdiefstal checkbox
         {
-            if (checkBox2.Checked) // check if fietsdiefstal is check
+            if (checkBox2.Checked) // Check if fietsdiefstal is selected
             {
                 checkBox3.Enabled = true;
-                if (checkBox1.Checked) // check if straatroof is also checked
+                if (checkBox1.Checked) // Check if straatroof is also selected
                 {
                     ShowFietsdiefstal = true;
                     ShowStraatroof = true;
                     loadgraph();
-                    chartHasLoaded = true;
-                    label1.Text = "";
+                    
+                    label1.Text = ""; //set warning string to none
                 }
-                else // if straatroof is not checked only view fietsdiefstal
+                else // If straatroof is not checked only view fietsdiefstal
                 {
                     ShowFietsdiefstal = true;
                     ShowStraatroof = false;
                     loadgraph();
-                    chartHasLoaded = true;
-                    label1.Text = "";
+                    
+                    label1.Text = "";//set warning string to none
                 }
             }
-            else // if fietsdiefstal is not checked set showfietsdiefstal to false
+            else // If fietsdiefstal is not checked set showfietsdiefstal to false
             {
                 ShowFietsdiefstal = false;
                 checkBox3.Enabled = false;
                 loadgraph();
             }
-        }
-
-        private void JobsGraph_Load(object sender, EventArgs e)
+        } 
+        private void JobsGraph_Load(object sender, EventArgs e) //Function for loading
         {
 
         }
-
-
-
-        private void checkBox4_CheckedChanged(object sender, EventArgs e) //show y-axe on straatroof
+        private void checkBox4_CheckedChanged(object sender, EventArgs e) //Display y-axe on Straatroof
         {
-            if (checkBox1.Checked)
+            if (checkBox1.Checked) //Checks if Straatroof is selected
             {
-
-                if (checkBox4.Checked)
+                if (checkBox4.Checked) //Checks if Y-axe Values is selected
                 {
-
                     ShowYOnStraatroof = true;
                     loadgraph();
-
                 }
-                else
+                else //Makes sure that ShowYOnStraatroof is false
                 {
                     ShowYOnStraatroof = false;
                     loadgraph();
-
                 }
             }
-
-
 
         }
         private void checkBox3_CheckedChanged(object sender, EventArgs e) //show y-axe on fietsdiefstal
         {
-            if (checkBox2.Checked)
+            if (checkBox2.Checked)//Checks if Fietsdiefstal is selected
             {
-
-                if (checkBox3.Checked)
+                if (checkBox3.Checked) //Checks if Y-axe Values is selected
                 {
-
                     ShowYOnFietsdiefstal = true;
                     loadgraph();
-
                 }
-                else
+                else //Makes sure that ShowYOnFietsdiefstal is false
                 {
                     ShowYOnFietsdiefstal = false;
                     loadgraph();
-
                 }
             }
 
         }
-
-        private void label4_Click(object sender, EventArgs e)
+        private void label4_Click(object sender, EventArgs e) //When clicked on label (not implemented)
         {
 
         }
-
-        private void label3_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e) //When clicked on label (not implemented)
         {
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //Reset Domain button
         {
             
-            textBox2.Text = String.Empty;
-            textBox1.Text = String.Empty;
-            minimumtime = 1;
-            maximumtime = 24;
-            loadgraph();
-        }
-
-       
+            textBox2.Text = String.Empty; //Clears text in domain textbox2
+            textBox1.Text = String.Empty; //Clears text in domain textbox1
+            minimumtime = 1; // Reset the minimumtime domain value
+            maximumtime = 24; // Reset the maximumtime domain value
+            loadgraph(); //Reloads the graph
+        }      
     }
 }
