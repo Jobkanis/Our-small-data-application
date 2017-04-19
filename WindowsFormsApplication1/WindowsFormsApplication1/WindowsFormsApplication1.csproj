@@ -68,12 +68,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="JonahsGraph.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="JonahsGraph.Designer.cs">
-      <DependentUpon>JonahsGraph.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,9 +97,6 @@
     <EmbeddedResource Include="JobsGraph.resx">
       <DependentUpon>JobsGraph.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="JonahsGraph.resx">
-      <DependentUpon>JonahsGraph.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Locations.resx">
       <DependentUpon>Locations.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +108,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -144,6 +136,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="MapRotterdam.bmp" />
     <Content Include="Official_Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -151,6 +144,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Official_Database.mdf</DependentUpon>
     </Content>
+    <None Include="Rotterdam map.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
