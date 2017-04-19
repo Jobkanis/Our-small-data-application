@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Locations
+    partial class Locations_Chart
     {
         /// <summary>
         /// Required designer variable.

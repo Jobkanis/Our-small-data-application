@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Locations : Form
+    public partial class Locations_Chart : Form
     {
         public Boolean ShowYOnFietsdiefstal = true;
         public Boolean ShowYOnStraatroof = true;
@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
 
         public List<int> SelectedDisticts = new List<int>();
 
-        public Locations()
+        public Locations_Chart()
         {
             InitializeComponent();
         }
@@ -95,7 +95,7 @@ namespace WindowsFormsApplication1
             // Robin : string databaseplace = "C:\\Users\\robin\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Dion : string databaseplace = "C:\\Users\\Dionykn\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
 
-            string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf"; //Database location on computer
+            string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
 
             SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + databaseplace + ";Integrated Security=True"); //Connection with database
 

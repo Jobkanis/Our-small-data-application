@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class JonahsGraph
+    partial class Months_Chart
     {
         /// <summary>
         /// Required designer variable.

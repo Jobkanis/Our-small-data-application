@@ -8,35 +8,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+
 namespace WindowsFormsApplication1
 {
-    public partial class Form1 : Form
+    public partial class Months_Chart : Form
     {
+        //All values that needs to load when form started (global values)
         Boolean ShowYOnFietsdiefstal = false;
         Boolean ShowYOnStraatroof = false;
-        bool chartHasLoaded = false;
         Boolean ShowFietsdiefstal = true;
         Boolean ShowStraatroof = true;
-        int ToggleYvalues = 0;
-
         int minimumtime = 1;
         int maximumtime = 24;
+       
 
-        public Form1()
+        public Months_Chart() //All stuff that needs to load when started (global values)
         {
             InitializeComponent();
             label1.Text = "";
+            checkBox4.Enabled = false;
+            checkBox3.Enabled = false;
+
             // closed            
         }
-        public Boolean chartvalues()
-        {
-            return true;
-        }
-        public Boolean notchartvalues()
-        {
-            return false;
-        }
-        public void loadgraph()
+        public void loadgraph() // Function for loading and reloading graph
         {
             // TO DO:
             // -  RELOAD BUTTON
@@ -61,11 +56,8 @@ namespace WindowsFormsApplication1
             // Jonah :  string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Job : string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Oguzhan :string databaseplace = "C:\\Users\\Oguzhan\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-            // Robin : string databaseplace = "C:\\Users\\robin\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-            // Dion : string databaseplace = "C:\\Users\\Dionykn\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-
-            string databaseplace = "C:\\Users\\Dionykn\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf"; //Database location on computer
-
+            // Dion: string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
+            string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + databaseplace + ";Integrated Security=True"); //Connection with database
 
             // fietsdiefstal
@@ -81,13 +73,11 @@ namespace WindowsFormsApplication1
             // opened (fietsdiefstal)     
             chart1.Series[0].Points.Clear();
             chart1.Series[1].Points.Clear();
-            chart1.Series[0].IsVisibleInLegend = true;
-            chart1.Series[1].IsVisibleInLegend = true;
             if (ShowFietsdiefstal == true)
             {
 
                 con.Open(); //open database connection
-                FDcommand = new SqlCommand("select uur, count(waarde) from fietsdiefstal WHERE uur >= " + minimumtime + " and uur <= " + maximumtime + "GROUP BY uur ORDER BY uur ASC;", con); // [Xvalue, Yvalue] = output query
+                FDcommand = new SqlCommand("select maand, count(waarde) from fietsdiefstal WHERE maand >= " + minimumtime + " and maand <= " + maximumtime + "AND plaats = 'Rotterdam' GROUP BY maand ORDER BY maand ASC;", con); // [Xvalue, Yvalue] = output query
                 FDreader = FDcommand.ExecuteReader(); // Make it readable
 
                 while (FDreader.Read()) // Read query
@@ -95,11 +85,13 @@ namespace WindowsFormsApplication1
                     string output = FDreader.GetValue(0).ToString();
                     var xvalue = GetInt(output); // Get int out of database: 0 if not convertable
 
+
                     output = FDreader.GetValue(1).ToString();
                     var yvalue = GetInt(output);
 
                     chart1.Series["Fietsdiefstal"].Points.AddXY(xvalue, yvalue * MultiplierFietsdiefstal); // Add point to graph
-                    chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00"; // Time shown underneath graph
+                    chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = xvalue.ToString(); // Time shown underneath graph
+
                     if (ShowYOnFietsdiefstal == true)
                     {
                         chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = yvalue.ToString();
@@ -115,7 +107,7 @@ namespace WindowsFormsApplication1
             if (ShowStraatroof == true)
             {
                 con.Open();
-                SRcommand = new SqlCommand("select uur, count(waarde) from straatroof WHERE uur >= " + minimumtime + " and uur <= " + maximumtime + "GROUP BY uur ORDER BY uur ASC;", con);
+                SRcommand = new SqlCommand("select maand, count(waarde) from straatroof WHERE maand >= " + minimumtime + " and maand <= " + maximumtime + "AND plaats = 'Rotterdam' GROUP BY maand ORDER BY maand ASC;", con);
                 SRreader = SRcommand.ExecuteReader();
 
                 while (SRreader.Read())
@@ -127,77 +119,51 @@ namespace WindowsFormsApplication1
                     var yvalue = GetInt(output);
 
                     chart1.Series["Straatroof"].Points.AddXY(xvalue, yvalue * MultiplierStraatroof);
-                    chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].AxisLabel = xvalue.ToString() + ":00";
+                    chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].AxisLabel = xvalue.ToString();
                     if (ShowYOnStraatroof == true)
                     {
                         chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].Label = yvalue.ToString();
                     }
+
                     //ADD VALUE TO POINT:  chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].Label = xvalue.ToString() + ":00";
                 }
 
                 con.Close();
-
+                chart1.ChartAreas[0].AxisX.Maximum = maximumtime + 1;
+                chart1.ChartAreas[0].AxisX.Minimum = minimumtime - 1;
                 label1.Text = "";
             }
 
         }
-        private int GetInt(string value) // returns 0 if not returns int if it is
+        private int GetInt(string value) // Converts string to int
         {
             int returnvalue;
             Boolean isNumeric = int.TryParse(value, out returnvalue);
             return returnvalue;
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void textBox2_TextChanged(object sender, EventArgs e) //Minimum domain value input (live update)
         {
-            chart1.Series[0].IsVisibleInLegend = false;
-            chart1.Series[1].IsVisibleInLegend = false;
-        }
-        //Charts
-        private void button1_Click(object sender, EventArgs e)
-        {
-            label2.Text = "";
+            TextBox minTextBox = (TextBox)sender;
+            string minValue = minTextBox.Text;
+            GetInt(minValue);
+            minimumtime = GetInt(minValue);
             loadgraph();
         }
-        //Map
-        private void button2_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e) //Maximum domain value input (live update)
         {
-            label2.Text = "";
-            foreach (var series in chart1.Series)
-            {
-                series.Points.Clear();
-                chart1.Series[0].IsVisibleInLegend = false;
-                chart1.Series[1].IsVisibleInLegend = false;
-            }
-            ShowYOnFietsdiefstal = false;
-            ShowYOnStraatroof = false;
-            ToggleYvalues = 0;
-            chartHasLoaded = false;
-            minimumtime = 1;
-            maximumtime = 24;
+            TextBox maxTextBox = (TextBox)sender;
+
+            string maxValue = maxTextBox.Text;
+            GetInt(maxValue); //converts the input to a int
+            maximumtime = GetInt(maxValue); //sets the maximumtime to maxValue
+            loadgraph(); //refresh the graph
+
         }
-        //Options
-        private void button3_Click(object sender, EventArgs e)
-        {
-            foreach (var series in chart1.Series)
-            {
-                series.Points.Clear();
-                chart1.Series[0].IsVisibleInLegend = false;
-                chart1.Series[1].IsVisibleInLegend = false;
-            }
-        }
-        //Charts panel
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void JobsGraph_Load(object sender, EventArgs e) //Function for loading
         {
 
         }
-        //Hourly graph
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
-        //Monthly graph
-        private void chart2_Click(object sender, EventArgs e)
+        private void JonahsGraph_Load(object sender, EventArgs e)
         {
 
         }

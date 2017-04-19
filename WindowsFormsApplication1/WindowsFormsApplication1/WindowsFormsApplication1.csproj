@@ -62,52 +62,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Hours_Chart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Hours_Chart.Designer.cs">
+      <DependentUpon>Hours_Chart.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI.cs">
+    <Compile Include="Months_Chart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI.Designer.cs">
-      <DependentUpon>GUI.cs</DependentUpon>
+    <Compile Include="Months_Chart.Designer.cs">
+      <DependentUpon>Months_Chart.cs</DependentUpon>
     </Compile>
-    <Compile Include="JobsGraph.cs">
+    <Compile Include="Locations_Chart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JobsGraph.Designer.cs">
-      <DependentUpon>JobsGraph.cs</DependentUpon>
-    </Compile>
-    <Compile Include="JonahsGraph.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="JonahsGraph.Designer.cs">
-      <DependentUpon>JonahsGraph.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Locations.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Locations.Designer.cs">
-      <DependentUpon>Locations.cs</DependentUpon>
+    <Compile Include="Locations_Chart.Designer.cs">
+      <DependentUpon>Locations_Chart.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Hours_Chart.resx">
+      <DependentUpon>Hours_Chart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI.resx">
-      <DependentUpon>GUI.cs</DependentUpon>
+    <EmbeddedResource Include="Months_Chart.resx">
+      <DependentUpon>Months_Chart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="JobsGraph.resx">
-      <DependentUpon>JobsGraph.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="JonahsGraph.resx">
-      <DependentUpon>JonahsGraph.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Locations.resx">
-      <DependentUpon>Locations.cs</DependentUpon>
+    <EmbeddedResource Include="Locations_Chart.resx">
+      <DependentUpon>Locations_Chart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

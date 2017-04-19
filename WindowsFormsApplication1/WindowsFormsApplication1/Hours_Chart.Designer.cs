@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class JobsGraph
+    partial class Hours_Chart
     {
         /// <summary>
         /// Required designer variable.
