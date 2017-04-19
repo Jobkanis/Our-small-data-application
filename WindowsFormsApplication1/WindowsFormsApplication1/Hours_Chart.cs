@@ -25,12 +25,14 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             label1.Text = "";
+            label5.Text = "";
+            label6.Text = "";
             checkBox4.Enabled = false;
             checkBox3.Enabled = false;
             
             // closed            
         }        
-        public void loadgraph() // Function for loading and reloading graph
+        void loadgraph() // Function for loading and reloading graph
         {
             // TO DO:
             // -  RELOAD BUTTON
@@ -41,14 +43,9 @@ namespace WindowsFormsApplication1
             // -  SHOW YVALUE ON GRAPH
             // Show lines in GUI
 
-
             // Multipliers in GUI
             int MultiplierFietsdiefstal = 1;
             int MultiplierStraatroof = 1;
-
-            // YValue on map
-
-
 
             // CREATING CONNECTION
 
@@ -56,8 +53,7 @@ namespace WindowsFormsApplication1
             // Job : string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Oguzhan :string databaseplace = "C:\\Users\\Oguzhan\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Dion: string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-            string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-
+            string databaseplace = "C:\\Users\\Dionykn\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + databaseplace + ";Integrated Security=True"); //Connection with database
 
             // fietsdiefstal
@@ -165,6 +161,8 @@ namespace WindowsFormsApplication1
         }       
         private void checkBox1_CheckedChanged(object sender, EventArgs e)//Straatroof checkbox
         {
+            label5.Text = "Events";
+            label6.Text = "Hours";
             if (checkBox1.Checked) // check if straatroof is selected
             {
                 checkBox4.Enabled = true;
@@ -195,6 +193,8 @@ namespace WindowsFormsApplication1
         }         
         private void checkBox2_CheckedChanged(object sender, EventArgs e)//Fietsdiefstal checkbox
         {
+            label5.Text = "Events";
+            label6.Text = "Hours";
             if (checkBox2.Checked) // Check if fietsdiefstal is selected
             {
                 checkBox3.Enabled = true;
@@ -215,6 +215,7 @@ namespace WindowsFormsApplication1
                     label1.Text = "";//set warning string to none
                 }
             }
+
             else // If fietsdiefstal is not checked set showfietsdiefstal to false
             {
                 ShowFietsdiefstal = false;
@@ -276,6 +277,11 @@ namespace WindowsFormsApplication1
             minimumtime = 1; // Reset the minimumtime domain value
             maximumtime = 24; // Reset the maximumtime domain value
             loadgraph(); //Reloads the graph
-        }      
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

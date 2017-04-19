@@ -16,22 +16,24 @@ namespace WindowsFormsApplication1
         //All values that needs to load when form started (global values)
         Boolean ShowYOnFietsdiefstal = false;
         Boolean ShowYOnStraatroof = false;
-        Boolean ShowFietsdiefstal = true;
-        Boolean ShowStraatroof = true;
+        Boolean ShowFietsdiefstal = false;
+        Boolean ShowStraatroof = false;
         int minimumtime = 1;
         int maximumtime = 24;
-       
 
         public Months_Chart() //All stuff that needs to load when started (global values)
         {
             InitializeComponent();
             label1.Text = "";
+            label5.Text = "";
+            label6.Text = "";
             checkBox4.Enabled = false;
             checkBox3.Enabled = false;
-
-            // closed            
+            loadgraph();
+            
+            // closed           
         }
-        public void loadgraph() // Function for loading and reloading graph
+        void loadgraph() // Function for loading and reloading graph
         {
             // TO DO:
             // -  RELOAD BUTTON
@@ -42,22 +44,17 @@ namespace WindowsFormsApplication1
             // -  SHOW YVALUE ON GRAPH
             // Show lines in GUI
 
-
             // Multipliers in GUI
             int MultiplierFietsdiefstal = 1;
             int MultiplierStraatroof = 1;
-
-            // YValue on map
-
-
-
+            
             // CREATING CONNECTION
 
             // Jonah :  string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Job : string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Oguzhan :string databaseplace = "C:\\Users\\Oguzhan\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Dion: string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-            string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
+            string databaseplace = "C:\\Users\\Dionykn\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + databaseplace + ";Integrated Security=True"); //Connection with database
 
             // fietsdiefstal
@@ -141,7 +138,100 @@ namespace WindowsFormsApplication1
             Boolean isNumeric = int.TryParse(value, out returnvalue);
             return returnvalue;
         }
-        private void textBox2_TextChanged(object sender, EventArgs e) //Minimum domain value input (live update)
+        private void chart1_Click(object sender, EventArgs e)//When there is clicked on chart1
+        {
+
+        }
+        private void JonahsGraph_Load(object sender, EventArgs e) //Function for loading
+        {
+
+        }
+        private void label4_Click(object sender, EventArgs e) //When clicked on label (not implemented)
+        {
+
+        }
+        private void label3_Click(object sender, EventArgs e) //When clicked on label (not implemented)
+        {
+
+        }
+        private void button1_Click(object sender, EventArgs e) //Reset Domain button
+        {
+
+            textBox2.Text = String.Empty; //Clears text in domain textbox2
+            textBox1.Text = String.Empty; //Clears text in domain textbox1
+            minimumtime = 1; // Reset the minimumtime domain value
+            maximumtime = 24; // Reset the maximumtime domain value
+            loadgraph(); //Reloads the graph
+        }
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)//Straatroof checkbox  
+        {
+            label5.Text = "Events";
+            label6.Text = "Months";
+            if (checkBox1.Checked) // check if straatroof is selected
+            {
+                checkBox4.Enabled = true;
+                ShowStraatroof = true;
+                loadgraph();
+            }
+            else // If fietsdiefstal is not checked, only view straatroof
+            {
+                checkBox4.Enabled = false;
+                ShowStraatroof = false;
+                loadgraph();
+            }
+           
+        }
+        private void checkBox2_CheckedChanged_1(object sender, EventArgs e)//Fietsdiefstal checkbox
+        {
+            label5.Text = "Events";
+            label6.Text = "Months";
+            if (checkBox2.Checked) // Check if fietsdiefstal is selected
+            {
+                checkBox3.Enabled = true;
+                ShowFietsdiefstal = true;
+                loadgraph();
+            }
+            else // If straatroof is not checked only view fietsdiefstal
+            {
+                ShowFietsdiefstal = false;
+                checkBox3.Enabled = false;
+                loadgraph();
+            }
+            
+        }
+        private void checkBox4_CheckedChanged_1(object sender, EventArgs e)//Display y-axe on Straatroof
+        {
+            if (checkBox1.Checked) //Checks if Straatroof is selected
+            {
+                if (checkBox4.Checked) //Checks if Y-axe Values is selected
+                {
+                    ShowYOnStraatroof = true;
+                    loadgraph();
+                }
+                else //Makes sure that ShowYOnStraatroof is false
+                {
+                    ShowYOnStraatroof = false;
+                    loadgraph();
+                }
+            }
+        }
+        private void checkBox3_CheckedChanged_1(object sender, EventArgs e)//show y-axe on fietsdiefstal
+        {
+            if (checkBox2.Checked)//Checks if Fietsdiefstal is selected
+            {
+                if (checkBox3.Checked) //Checks if Y-axe Values is selected
+                {
+                    ShowYOnFietsdiefstal = true;
+                    loadgraph();
+                }
+                else //Makes sure that ShowYOnFietsdiefstal is false
+                {
+                    ShowYOnFietsdiefstal = false;
+                    loadgraph();
+                }
+            }
+        }
+        private void textBox2_TextChanged_1(object sender, EventArgs e)//Minimum domain value input (live update)
         {
             TextBox minTextBox = (TextBox)sender;
             string minValue = minTextBox.Text;
@@ -149,21 +239,24 @@ namespace WindowsFormsApplication1
             minimumtime = GetInt(minValue);
             loadgraph();
         }
-        private void textBox1_TextChanged(object sender, EventArgs e) //Maximum domain value input (live update)
+        private void textBox1_TextChanged_1(object sender, EventArgs e)//Maximum domain value input (live update)
         {
             TextBox maxTextBox = (TextBox)sender;
-
             string maxValue = maxTextBox.Text;
             GetInt(maxValue); //converts the input to a int
             maximumtime = GetInt(maxValue); //sets the maximumtime to maxValue
             loadgraph(); //refresh the graph
-
         }
-        private void JobsGraph_Load(object sender, EventArgs e) //Function for loading
+        private void button1_Click_1(object sender, EventArgs e)//Reset Domain button
         {
-
+            textBox2.Text = String.Empty; //Clears text in domain textbox2
+            textBox1.Text = String.Empty; //Clears text in domain textbox1
+            minimumtime = 1; // Reset the minimumtime domain value
+            maximumtime = 24; // Reset the maximumtime domain value
+            loadgraph(); //Reloads the graph
         }
-        private void JonahsGraph_Load(object sender, EventArgs e)
+
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }
