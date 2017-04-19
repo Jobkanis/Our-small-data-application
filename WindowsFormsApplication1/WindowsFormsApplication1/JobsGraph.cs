@@ -27,6 +27,8 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             label1.Text = "";
+            checkBox4.Enabled = false;
+            checkBox3.Enabled = false;
             // closed            
         }
         public Boolean chartvalues()
@@ -54,7 +56,7 @@ namespace WindowsFormsApplication1
             int MultiplierStraatroof = 1;
 
             // YValue on map
-
+            
 
 
             // CREATING CONNECTION
@@ -62,10 +64,8 @@ namespace WindowsFormsApplication1
             // Jonah :  string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Job : string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Oguzhan :string databaseplace = "C:\\Users\\Oguzhan\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-            // Robin : string databaseplace = "C:\\Users\\robin\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-            // Dion : string databaseplace = "C:\\Users\\Dionykn\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
 
-            string databaseplace = "C:\\Users\\robin\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf"; //Database location on computer
+            string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf"; //Database location on computer
 
             SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + databaseplace + ";Integrated Security=True"); //Connection with database
 
@@ -86,7 +86,7 @@ namespace WindowsFormsApplication1
             {
 
                 con.Open(); //open database connection
-                FDcommand = new SqlCommand("select uur, count(waarde) from fietsdiefstal WHERE uur >= " + minimumtime + " and uur <= " + maximumtime + "GROUP BY uur ORDER BY uur ASC;", con); // [Xvalue, Yvalue] = output query
+                FDcommand = new SqlCommand("select uur, count(waarde) from fietsdiefstal WHERE uur >= " + minimumtime + " and uur <= " + maximumtime + "AND plaats = 'Rotterdam' GROUP BY uur ORDER BY uur ASC;", con); // [Xvalue, Yvalue] = output query
                 FDreader = FDcommand.ExecuteReader(); // Make it readable
 
                 while (FDreader.Read()) // Read query
@@ -114,7 +114,7 @@ namespace WindowsFormsApplication1
             if (ShowStraatroof == true)
             {
                 con.Open();
-                SRcommand = new SqlCommand("select uur, count(waarde) from straatroof WHERE uur >= " + minimumtime + " and uur <= " + maximumtime + "GROUP BY uur ORDER BY uur ASC;", con);
+                SRcommand = new SqlCommand("select uur, count(waarde) from straatroof WHERE uur >= " + minimumtime + " and uur <= " + maximumtime + "AND plaats = 'Rotterdam' GROUP BY uur ORDER BY uur ASC;", con);
                 SRreader = SRcommand.ExecuteReader();
 
                 while (SRreader.Read())
@@ -135,7 +135,8 @@ namespace WindowsFormsApplication1
                 }
 
                 con.Close();
-
+                chart1.ChartAreas[0].AxisX.Maximum = maximumtime + 1;
+                chart1.ChartAreas[0].AxisX.Minimum = minimumtime - 1;
                 label1.Text = "";
             }
 
@@ -152,6 +153,19 @@ namespace WindowsFormsApplication1
         }
         //clear chart
         private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (var series in chart1.Series)
+            {
+                series.Points.Clear();
+            }
+            ShowYOnFietsdiefstal = false;
+            ShowYOnStraatroof = false;
+            ToggleYvalues = 0;
+            chartHasLoaded = false;
+            minimumtime = 1;
+            maximumtime = 24;
+        }
+        public void cleargraph()
         {
             foreach (var series in chart1.Series)
             {
@@ -233,6 +247,7 @@ namespace WindowsFormsApplication1
             string minValue = minTextBox.Text;
             GetInt(minValue);
             minimumtime = GetInt(minValue);
+            loadgraph();
         }
         //maximum value
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -242,9 +257,121 @@ namespace WindowsFormsApplication1
             string maxValue =maxTextBox.Text;
             GetInt(maxValue);
             maximumtime = GetInt(maxValue);
+            loadgraph();
+
+        }
+        //straatroof check
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked) // check if straatroof is check
+            {
+                checkBox4.Enabled = true;
+                if (checkBox2.Checked) // check if fietsdiefstal is also checked
+                {
+                    ShowFietsdiefstal = true;
+                    ShowStraatroof = true;
+                    loadgraph();
+                    chartHasLoaded = true;
+                    label1.Text = "";
+                }
+                else // if fietsdiefstal is not checked only view straatroof
+                {
+                    ShowFietsdiefstal = false;
+                    ShowStraatroof = true;
+                    loadgraph();
+                    chartHasLoaded = true;
+                    label1.Text = "";
+                }
+                
+            }
+            else // if straatroof is not checked set showstraatroof to false
+            {
+                ShowStraatroof = false;
+                checkBox4.Enabled = false;
+                loadgraph();
+            }
+        }
+        //fietsdiefstal check
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked) // check if fietsdiefstal is check
+            {
+                checkBox3.Enabled = true;
+                if (checkBox1.Checked) // check if straatroof is also checked
+                {
+                    ShowFietsdiefstal = true;
+                    ShowStraatroof = true;
+                    loadgraph();
+                    chartHasLoaded = true;
+                    label1.Text = "";
+                }
+                else // if straatroof is not checked only view fietsdiefstal
+                {
+                    ShowFietsdiefstal = true;
+                    ShowStraatroof = false;
+                    loadgraph();
+                    chartHasLoaded = true;
+                    label1.Text = "";
+                }
+            }
+            else // if fietsdiefstal is not checked set showfietsdiefstal to false
+            {
+                ShowFietsdiefstal = false;
+                checkBox3.Enabled = false;
+                loadgraph();
+            }
+        }
+
+        private void JobsGraph_Load(object sender, EventArgs e)
+        {
 
         }
 
         
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e) //show y-axe on straatroof
+        {
+            if (checkBox1.Checked)
+            {
+                
+                if (checkBox4.Checked)
+                {
+
+                    ShowYOnStraatroof = true;
+                    loadgraph();
+
+                }
+                else
+                {
+                    ShowYOnStraatroof = false;
+                    loadgraph();
+
+                }
+            }
+            
+            
+
+        }
+        private void checkBox3_CheckedChanged(object sender, EventArgs e) //show y-axe on fietsdiefstal
+        {
+            if (checkBox2.Checked)
+            {
+
+                if (checkBox3.Checked)
+                {
+
+                    ShowYOnFietsdiefstal = true;
+                    loadgraph();
+
+                }
+                else
+                {
+                    ShowYOnFietsdiefstal = false;
+                    loadgraph();
+
+                }
+            }
+
+        }
     }
 }
