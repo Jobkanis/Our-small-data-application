@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
             // -  SET TIME DOMAIN (1:00 - 24:00 wordt bijvorobeeld 13:00 - 15:00)   |.|-----------|.....| 
             // -  SHOW YVALUE ON GRAPH
             // Show lines in GUI
-            
+
 
             // Multipliers in GUI
             int MultiplierFietsdiefstal = 1;
@@ -64,10 +64,8 @@ namespace WindowsFormsApplication1
             // Jonah :  string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Job : string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Oguzhan :string databaseplace = "C:\\Users\\Oguzhan\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-            // Robin : string databaseplace = "C:\\Users\\robin\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-            // Dion : string databaseplace = "C:\\Users\\Dionykn\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
 
-            string databaseplace = "C:\\Users\\robin\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf"; //Database location on computer
+            string databaseplace = "C:\\Users\\Jonah Kalkman\\Desktop\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf"; //Database location on computer
 
             SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + databaseplace + ";Integrated Security=True"); //Connection with database
 
@@ -166,7 +164,6 @@ namespace WindowsFormsApplication1
             chartHasLoaded = false;
             minimumtime = 1;
             maximumtime = 24;
-<<<<<<< HEAD
         }
         public void cleargraph()
         {
@@ -180,8 +177,6 @@ namespace WindowsFormsApplication1
             chartHasLoaded = false;
             minimumtime = 1;
             maximumtime = 24;
-=======
->>>>>>> origin/master
         }
         //y-as values
         private void button3_Click(object sender, EventArgs e)
@@ -247,7 +242,6 @@ namespace WindowsFormsApplication1
         }
         //minimum value
         private void textBox2_TextChanged(object sender, EventArgs e)
-<<<<<<< HEAD
         {
             TextBox minTextBox = (TextBox)sender;
             string minValue = minTextBox.Text;
@@ -259,8 +253,8 @@ namespace WindowsFormsApplication1
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             TextBox maxTextBox = (TextBox)sender;
-            
-            string maxValue =maxTextBox.Text;
+
+            string maxValue = maxTextBox.Text;
             GetInt(maxValue);
             maximumtime = GetInt(maxValue);
             loadgraph();
@@ -288,7 +282,7 @@ namespace WindowsFormsApplication1
                     chartHasLoaded = true;
                     label1.Text = "";
                 }
-                
+
             }
             else // if straatroof is not checked set showstraatroof to false
             {
@@ -329,33 +323,17 @@ namespace WindowsFormsApplication1
         }
 
         private void JobsGraph_Load(object sender, EventArgs e)
-=======
->>>>>>> origin/master
         {
-            TextBox minTextBox = (TextBox)sender;
-            string minValue = minTextBox.Text;
-            GetInt(minValue);
-            minimumtime = GetInt(minValue);
-        }
-        //maximum value
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            TextBox maxTextBox = (TextBox)sender;
-            
-            string maxValue =maxTextBox.Text;
-            GetInt(maxValue);
-            maximumtime = GetInt(maxValue);
 
         }
 
-        
-<<<<<<< HEAD
+
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e) //show y-axe on straatroof
         {
             if (checkBox1.Checked)
             {
-                
+
                 if (checkBox4.Checked)
                 {
 
@@ -370,8 +348,8 @@ namespace WindowsFormsApplication1
 
                 }
             }
-            
-            
+
+
 
         }
         private void checkBox3_CheckedChanged(object sender, EventArgs e) //show y-axe on fietsdiefstal
@@ -395,7 +373,5 @@ namespace WindowsFormsApplication1
             }
 
         }
-=======
->>>>>>> origin/master
     }
 }
