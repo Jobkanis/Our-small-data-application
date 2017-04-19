@@ -60,6 +60,8 @@ namespace WindowsFormsApplication1
             return returnstring;
 
         }
+        public string CreateTotalQuery(string tabel, int district);
+        string amaznistring = "select srdistrict, fddistrict, (COALESCE(fdamount, 0) + COALESCE(sramount, 0)) as total from (select district AS fddistrict, count(*) AS fdamount from fietsdiefstal GROUP BY district) fd right join (select district AS srdistrict, count(*) AS sramount from straatroof GROUP by district) sr on srdistrict = fddistrict WHERE srdistrict = 'district 1'  or fddistrict = 'district 1';";
 
         public bool ChangeDistrict(int district) // True = added, False = Removed
         {
