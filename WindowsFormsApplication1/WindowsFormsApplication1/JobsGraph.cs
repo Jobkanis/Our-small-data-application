@@ -160,6 +160,8 @@ namespace WindowsFormsApplication1
             ShowYOnStraatroof = false;
             ToggleYvalues = 0;
             chartHasLoaded = false;
+            minimumtime = 1;
+            maximumtime = 24;
         }
         //y-as values
         private void button3_Click(object sender, EventArgs e)
@@ -223,10 +225,25 @@ namespace WindowsFormsApplication1
             chartHasLoaded = true;
             label1.Text = "";
         }
-
-        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        //minimum value
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            TextBox minTextBox = (TextBox)sender;
+            string minValue = minTextBox.Text;
+            GetInt(minValue);
+            minimumtime = GetInt(minValue);
+        }
+        //maximum value
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            TextBox maxTextBox = (TextBox)sender;
+            
+            string maxValue =maxTextBox.Text;
+            GetInt(maxValue);
+            maximumtime = GetInt(maxValue);
 
         }
+
+        
     }
 }
