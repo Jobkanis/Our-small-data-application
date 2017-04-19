@@ -156,11 +156,13 @@ namespace WindowsFormsApplication1
         //Charts
         private void button1_Click(object sender, EventArgs e)
         {
+            label2.Text = "";
             loadgraph();
         }
         //Map
         private void button2_Click(object sender, EventArgs e)
         {
+            label2.Text = "";
             foreach (var series in chart1.Series)
             {
                 series.Points.Clear();
@@ -177,15 +179,25 @@ namespace WindowsFormsApplication1
         //Options
         private void button3_Click(object sender, EventArgs e)
         {
-
+            foreach (var series in chart1.Series)
+            {
+                series.Points.Clear();
+                chart1.Series[0].IsVisibleInLegend = false;
+                chart1.Series[1].IsVisibleInLegend = false;
+            }
         }
         //Charts panel
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
+        //Hourly graph
         private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+        //Monthly graph
+        private void chart2_Click(object sender, EventArgs e)
         {
 
         }
