@@ -25,8 +25,6 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             label1.Text = "";
-            label5.Text = "";
-            label6.Text = "";
             checkBox4.Enabled = false;
             checkBox3.Enabled = false;
             loadgraph();
@@ -165,8 +163,6 @@ namespace WindowsFormsApplication1
         }
         private void checkBox1_CheckedChanged_1(object sender, EventArgs e)//Straatroof checkbox  
         {
-            label5.Text = "Events";
-            label6.Text = "Months";
             if (checkBox1.Checked) // check if straatroof is selected
             {
                 checkBox4.Enabled = true;
@@ -183,8 +179,6 @@ namespace WindowsFormsApplication1
         }
         private void checkBox2_CheckedChanged_1(object sender, EventArgs e)//Fietsdiefstal checkbox
         {
-            label5.Text = "Events";
-            label6.Text = "Months";
             if (checkBox2.Checked) // Check if fietsdiefstal is selected
             {
                 checkBox3.Enabled = true;
@@ -257,6 +251,11 @@ namespace WindowsFormsApplication1
         }
 
         private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }
