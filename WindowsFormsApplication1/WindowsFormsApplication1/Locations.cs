@@ -13,13 +13,13 @@ namespace WindowsFormsApplication1
 {
     public partial class Locations : Form
     {
-        public Boolean ShowYOnFietsdiefstal = true;
-        public Boolean ShowYOnStraatroof = true;
-        public Boolean ShowYOnTotal = true;
+        Boolean ShowYOnFietsdiefstal = false;
+        Boolean ShowYOnStraatroof = false;
+        Boolean ShowYOnTotal = false;
 
-        public Boolean ShowTotal = false;
-        public Boolean ShowFietsdiefstal = true;
-        public Boolean ShowStraatroof = true;
+        Boolean ShowTotal = true;
+        Boolean ShowFietsdiefstal = true;
+        Boolean ShowStraatroof = true;
 
         List<int> FullDistrictList = new List<int>(new int[] { 1, 2, 3, 4, 5, 6, 9, 10, 11, 12 });
         List<string> FullDistrictNames = new List<string>(new string[] { "Waterweg", "Schiedam", "Rotterdam-West", "Rotterdam Centrum", "De Noordhoek", "District Oost", "Feyenoord", "Rotterdam-Zuid", "De eilanden", "Rivierpolitie" });
@@ -33,6 +33,7 @@ namespace WindowsFormsApplication1
 
         public string CreateQuerie(string tabel, int district)
         {
+            Console.WriteLine(SelectedDisticts);
             string WhereString = " WHERE plaats = 'Rotterdam' AND district = 'district ";
             WhereString += district.ToString() + "' ";
 
@@ -72,12 +73,14 @@ namespace WindowsFormsApplication1
         {
             if (SelectedDisticts.Find(x => x == district) == 0)
             {
+                Console.WriteLine("Added" + district);
                 SelectedDisticts.Add(district);
                 loadgraph();
                 return false;
             }
             else
             {
+                Console.WriteLine("Removed" + district);
                 SelectedDisticts.Remove(district);
                 loadgraph();
                 return true;
@@ -131,76 +134,72 @@ namespace WindowsFormsApplication1
                 districttotal = 0;
                 string sqlquery;
                 // fietsdiefstal
-                if (ShowFietsdiefstal == true)
-                    {
-                    con.Open(); //open database connection
 
-                    sqlquery = CreateQuerie("fietsdiefstal", district); //select count(*) from fietsdiefstal where district = 'district 1'
-                    FDcommand = new SqlCommand(sqlquery, con); //(output = 1 row of district count size)
-                    FDreader = FDcommand.ExecuteReader(); // Make it readable
-                    while (FDreader.Read()) // Read query
-                    {
-                        int output = FDreader.GetInt32(0);
-                        districtfietsdiefstal = output; // Get int out of database: 0 if not convertable
-                    }
+                con.Open(); //open database connection
 
-                    chart1.Series["Fietsdiefstal"].Points.AddXY(GetName(district), districtfietsdiefstal); // Add point to graph
-                    chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = GetName(district);
-                    if (ShowYOnFietsdiefstal == true)
-                    {
-                        chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = districtfietsdiefstal.ToString();
-                    }
-
-                    //ADD VALUE TO POINT: chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = xvalue.ToString() + ":00"; // comment on the graph
-                    con.Close();
+                sqlquery = CreateQuerie("fietsdiefstal", district); //select count(*) from fietsdiefstal where district = 'district 1'
+                FDcommand = new SqlCommand(sqlquery, con); //(output = 1 row of district count size)
+                FDreader = FDcommand.ExecuteReader(); // Make it readable
+                while (FDreader.Read()) // Read query
+                {
+                    int output = FDreader.GetInt32(0);
+                    districtfietsdiefstal = output; // Get int out of database: 0 if not convertable
                 }
+
+                chart1.Series["Fietsdiefstal"].Points.AddXY(GetName(district), districtfietsdiefstal); // Add point to graph
+                chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = GetName(district);
+                if (ShowYOnFietsdiefstal == true)
+                {
+                    chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = districtfietsdiefstal.ToString();
+                }
+
+                //ADD VALUE TO POINT: chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = xvalue.ToString() + ":00"; // comment on the graph
+                con.Close();
+
                 // straatroof
-                if (ShowStraatroof == true)
-                {
-                    con.Open(); //open database connection
 
-                    sqlquery = CreateQuerie("straatroof", district); //select count(*) from fietsdiefstal where district = 'district 1';
-                    SRcommand = new SqlCommand(sqlquery, con); //(output = 1 row of district count size)
-                    SRreader = SRcommand.ExecuteReader(); // Make it readable
-                    while (SRreader.Read()) // Read query
-                    {
-                        string output = SRreader.GetValue(0).ToString();
-                        districtstraatroof = GetInt(output); // Get int out of database: 0 if not convertable
-                    }
-                    chart1.Series["Straatroof"].Points.AddXY(GetName(district), districtstraatroof); // Add point to graph
-                    chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].AxisLabel = GetName(district); // Time shown underneath graph
-                    if (ShowYOnStraatroof == true)
-                    {
-                        chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].Label = districtstraatroof.ToString();
-                    }
-                    //ADD VALUE TO POINT: chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = xvalue.ToString() + ":00"; // comment on the graph
-                    con.Close();
+                con.Open(); //open database connection
+
+                sqlquery = CreateQuerie("straatroof", district); //select count(*) from fietsdiefstal where district = 'district 1';
+                SRcommand = new SqlCommand(sqlquery, con); //(output = 1 row of district count size)
+                SRreader = SRcommand.ExecuteReader(); // Make it readable
+                while (SRreader.Read()) // Read query
+                {
+                    string output = SRreader.GetValue(0).ToString();
+                    districtstraatroof = GetInt(output); // Get int out of database: 0 if not convertable
                 }
+                chart1.Series["Straatroof"].Points.AddXY(GetName(district), districtstraatroof); // Add point to graph
+                chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].AxisLabel = GetName(district); // Time shown underneath graph
+                if (ShowYOnStraatroof == true)
+                {
+                    chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].Label = districtstraatroof.ToString();
+                }
+                //ADD VALUE TO POINT: chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].Label = xvalue.ToString() + ":00"; // comment on the graph
+                con.Close();
+
                 // total
+                con.Open(); //open database connection
 
-                if (ShowTotal == true)
+                sqlquery = CreateTotalQuery(district); //select count(*) from fietsdiefstal where district = 'district 1'
+                Totalcommand = new SqlCommand(sqlquery, con); //(output = 1 row of district count size)
+                Console.WriteLine(sqlquery);
+                Totalreader = Totalcommand.ExecuteReader(); // Make it readable
+                while (Totalreader.Read()) // Read query
                 {
-                    con.Open(); //open database connection
-
-                    sqlquery = CreateTotalQuery(district); //select count(*) from fietsdiefstal where district = 'district 1'
-                    Totalcommand = new SqlCommand(sqlquery, con); //(output = 1 row of district count size)
-                    Totalreader = Totalcommand.ExecuteReader(); // Make it readable
-                    while (Totalreader.Read()) // Read query
-                    {
-                        int output = Totalreader.GetInt32(0);
-                        Console.WriteLine("total by query: " + output.ToString());
-                        Console.WriteLine("Total by calculator: " + (districtfietsdiefstal + districtstraatroof).ToString());
-                        districttotal = output; //output; // Get int out of database: 0 if not convertable
-                    }
-                    con.Close();
-
-                    chart1.Series["Total"].Points.AddXY(GetName(district), districttotal);
-                    chart1.Series["Total"].Points[chart1.Series["Total"].Points.Count() - 1].AxisLabel = GetName(district);
-                    if (ShowYOnTotal == true)
-                    {
-                        chart1.Series["Total"].Points[chart1.Series["Total"].Points.Count() - 1].Label = districttotal.ToString();
-                    }
+                    int output = Totalreader.GetInt32(0);
+                    Console.WriteLine("total by query: " + output.ToString());
+                    districttotal = output; //output; // Get int out of database: 0 if not convertable
                 }
+                con.Close();
+
+                Console.WriteLine("Total by calculator: " + (districtfietsdiefstal + districtstraatroof).ToString());
+                chart1.Series["Total"].Points.AddXY(GetName(district), districttotal);
+                chart1.Series["Total"].Points[chart1.Series["Straatroof"].Points.Count() - 1].AxisLabel = GetName(district);
+                if (ShowYOnTotal == true)
+                {
+                    chart1.Series["Total"].Points[chart1.Series["Total"].Points.Count() - 1].Label = districttotal.ToString();
+                }
+                // Time shown underneath graph
             }
             chart1.ChartAreas[0].AxisX.Maximum = SelectedDisticts.Count() + 1;
         }
@@ -307,96 +306,6 @@ namespace WindowsFormsApplication1
         private void Locations_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e) //straatroof check
-        {
-            if (checkBox1.Checked) // show straatroof
-            {
-                checkBox4.Enabled = true;
-                ShowStraatroof = true;
-                loadgraph();
-            }
-            else // if straatroof is not checked set showstraatroof to false
-            {
-                ShowStraatroof = false;
-                checkBox4.Enabled = false;
-                loadgraph();
-            }
-        }
-
-        private void checkBox4_CheckedChanged(object sender, EventArgs e) //straatroof y check
-        {
-            if (checkBox4.Checked)
-            {
-                ShowYOnStraatroof = true;
-                loadgraph();
-            }
-            else
-            {
-                ShowYOnStraatroof = false;
-                loadgraph();
-            }
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e) // fietsdiefstal check
-        {
-            if (checkBox2.Checked) // show straatroof
-            {
-                checkBox3.Enabled = true;
-                ShowFietsdiefstal = true;
-                loadgraph();
-            }
-            else // if straatroof is not checked set showstraatroof to false
-            {
-                ShowFietsdiefstal = false;
-                checkBox3.Enabled = false;
-                loadgraph();
-            }
-        }
-
-        private void checkBox3_CheckedChanged(object sender, EventArgs e) //fietsdiefstal y check
-        {
-            if (checkBox3.Checked)
-            {
-                ShowYOnFietsdiefstal = true;
-                loadgraph();
-            }
-            else
-            {
-                ShowYOnFietsdiefstal = false;
-                loadgraph();
-            }
-        }
-
-        private void checkBox5_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox5.Checked) // show straatroof
-            {
-                checkBox6.Enabled = true;
-                ShowTotal = true;
-                loadgraph();
-            }
-            else // if straatroof is not checked set showstraatroof to false
-            {
-                ShowTotal = false;
-                checkBox6.Enabled = false;
-                loadgraph();
-            }
-        }
-
-        private void checkBox6_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox6.Checked)
-            {
-                ShowYOnTotal = true;
-                loadgraph();
-            }
-            else
-            {
-                ShowYOnTotal = false;
-                loadgraph();
-            }
         }
     }
 }
