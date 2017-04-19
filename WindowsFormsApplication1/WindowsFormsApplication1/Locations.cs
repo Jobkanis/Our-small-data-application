@@ -22,6 +22,8 @@ namespace WindowsFormsApplication1
 
         int minimumtime = 1;
         int maximumtime = 24;
+        List<int> FullDistrictList = new List<int>(new int[] { 1, 2, 3, 4, 5, 6, 9, 10, 11, 12 });
+        List<string> FullDistrictNames = new List<string>(new string[] { "Waterweg", "Schiedam", "Rotterdam-West", "Rotterdam Centrum", "De Noordhoek", "District Oost", "Feyenoord", "Rotterdam-Zuid", "De eilanden", "Rivierpolitie" });
 
         public List<int> SelectedDisticts = new List<int>();
 
@@ -33,7 +35,7 @@ namespace WindowsFormsApplication1
         public string CreateQuerie(string tabel, int district)
         {
             Console.WriteLine(SelectedDisticts);
-            string WhereString = " WHERE district = 'district ";
+            string WhereString = " WHERE plaats = 'Rotterdam' AND district = 'district ";
             WhereString += district.ToString() + "' ";
 
             //Adding all districts together
@@ -61,31 +63,21 @@ namespace WindowsFormsApplication1
 
         public bool ChangeDistrict(int district) // True = added, False = Removed
         {
-            foreach (int distr in SelectedDisticts)
-            {
-                Console.WriteLine(distr);
-            }
-
             if (SelectedDisticts.Find(x => x == district) == 0)
             {
                 Console.WriteLine("Added" + district);
                 SelectedDisticts.Add(district);
+                loadgraph();
                 return false;
             }
             else
             {
                 Console.WriteLine("Removed" + district);
                 SelectedDisticts.Remove(district);
+                loadgraph();
                 return true;
             }
 
-        }
-
-        private void DrawGraph_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("Getting query");
-            loadgraph();
-            InitializeComponent();
         }
 
         public void loadgraph()
@@ -163,8 +155,8 @@ namespace WindowsFormsApplication1
                 chart1.Series["Fietsdiefstal"].Points.AddXY(("district "  + district.ToString()), districtfietsdiefstal); // Add point to graph
                 chart1.Series["Straatroof"].Points.AddXY(("district " + district.ToString()), districtstraatroof); // Add point to graph
 
-                chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = "district " + district.ToString(); // Time shown underneath graph
-                chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].AxisLabel = "district " + district.ToString(); // Time shown underneath graph
+                chart1.Series["Fietsdiefstal"].Points[chart1.Series["Fietsdiefstal"].Points.Count() - 1].AxisLabel = GetName(district); // Time shown underneath graph
+                chart1.Series["Straatroof"].Points[chart1.Series["Straatroof"].Points.Count() - 1].AxisLabel = GetName(district); // Time shown underneath graph
 
                 if (ShowYOnStraatroof == true)
                 {
@@ -176,130 +168,110 @@ namespace WindowsFormsApplication1
                 }
             }
             chart1.ChartAreas[0].AxisX.Maximum= SelectedDisticts.Count() + 1;
-            InitializeComponent();
         }
 
-        private int GetInt(string value) // returns 0 if not returns int if it is
+        public int GetInt(string value) // returns 0 if not returns int if it is
         {
             int returnvalue;
             Boolean isNumeric = int.TryParse(value, out returnvalue);
             return returnvalue;
         }
-    
+
+        public string GetName(int district) // returns ""  when no name avable
+        {
+            string returnname = "";
+            int index = FullDistrictList.IndexOf(district);
+            returnname = FullDistrictNames[index]; // dangerous for errors: be allert
+            return returnname;
+        }
     //#######################################################################
 
-    private void button_District1_Click_1(object sender, EventArgs e)
+    private void button_District3_Click(object sender, EventArgs e)
+    {
+        bool Selected = ChangeDistrict(3);
+        if (Selected == true)
         {
-            bool Selected = ChangeDistrict(1);
-            if (Selected == true)
-            {
-                button_District1.BackColor = System.Drawing.SystemColors.Control;
-            }
-            else
-            {
-                button_District1.BackColor = System.Drawing.SystemColors.Highlight;
-            }
+            button_District3.BackColor = System.Drawing.SystemColors.Control;
         }
-
-        private void button_District2_Click(object sender, EventArgs e)
+        else
         {
-            bool Selected = ChangeDistrict(2);
-            if (Selected == true)
-            {
-                button_District2.BackColor = System.Drawing.SystemColors.Control;
-            }
-            else
-            {
-                button_District2.BackColor = System.Drawing.SystemColors.Highlight;
-            }
+            button_District3.BackColor = System.Drawing.SystemColors.Highlight;
         }
+    }
 
-        private void button_District3_Click(object sender, EventArgs e)
+    private void button_District5_Click(object sender, EventArgs e)
+    {
+        bool Selected = ChangeDistrict(5);
+        if (Selected == true)
         {
-            bool Selected = ChangeDistrict(3);
-            if (Selected == true)
-            {
-                button_District3.BackColor = System.Drawing.SystemColors.Control;
-            }
-            else
-            {
-                button_District3.BackColor = System.Drawing.SystemColors.Highlight;
-            }
+            button_District5.BackColor = System.Drawing.SystemColors.Control;
         }
-
-        private void button_District5_Click(object sender, EventArgs e)
+        else
         {
-            bool Selected = ChangeDistrict(5);
-            if (Selected == true)
-            {
-                button_District5.BackColor = System.Drawing.SystemColors.Control;
-            }
-            else
-            {
-                button_District5.BackColor = System.Drawing.SystemColors.Highlight;
-            }
+            button_District5.BackColor = System.Drawing.SystemColors.Highlight;
         }
+    }
 
-        private void button_District6_Click(object sender, EventArgs e)
+    private void button_District6_Click(object sender, EventArgs e)
+    {
+        bool Selected = ChangeDistrict(6);
+        if (Selected == true)
         {
-            bool Selected = ChangeDistrict(6);
-            if (Selected == true)
-            {
-                button_District6.BackColor = System.Drawing.SystemColors.Control;
-            }
-            else
-            {
-                button_District6.BackColor = System.Drawing.SystemColors.Highlight;
-            }
+            button_District6.BackColor = System.Drawing.SystemColors.Control;
         }
-
-        private void button_District9_Click(object sender, EventArgs e)
+        else
         {
-            bool Selected = ChangeDistrict(9);
-            if (Selected == true)
-            {
-                button_District9.BackColor = System.Drawing.SystemColors.Control;
-            }
-            else
-            {
-                button_District9.BackColor = System.Drawing.SystemColors.Highlight;
-            }
+            button_District6.BackColor = System.Drawing.SystemColors.Highlight;
         }
+    }
 
-        private void button_District10_Click(object sender, EventArgs e)
+    private void button_District9_Click(object sender, EventArgs e)
+    {
+        bool Selected = ChangeDistrict(9);
+        if (Selected == true)
         {
-            bool Selected = ChangeDistrict(10);
-            if (Selected == true)
-            {
-                button_District10.BackColor = System.Drawing.SystemColors.Control;
-            }
-            else
-            {
-                button_District10.BackColor = System.Drawing.SystemColors.Highlight;
-            }
+            button_District9.BackColor = System.Drawing.SystemColors.Control;
         }
-
-        private void button_District12_Click(object sender, EventArgs e)
+        else
         {
-            bool Selected = ChangeDistrict(12);
-            if (Selected == true)
-            {
-                button_District12.BackColor = System.Drawing.SystemColors.Control;
-            }
-            else
-            {
-                button_District12.BackColor = System.Drawing.SystemColors.Highlight;
-            }
+            button_District9.BackColor = System.Drawing.SystemColors.Highlight;
         }
-        private void chart1_Click(object sender, EventArgs e)
+    }
+
+    private void button_District10_Click(object sender, EventArgs e)
+    {
+        bool Selected = ChangeDistrict(10);
+        if (Selected == true)
         {
-
-
+            button_District10.BackColor = System.Drawing.SystemColors.Control;
         }
-
-        private void Locations_Load(object sender, EventArgs e)
+        else
         {
-
+            button_District10.BackColor = System.Drawing.SystemColors.Highlight;
         }
+    }
+
+    private void button_District12_Click(object sender, EventArgs e)
+    {
+        bool Selected = ChangeDistrict(4);
+        if (Selected == true)
+        {
+            button_District12.BackColor = System.Drawing.SystemColors.Control;
+        }
+        else
+        {
+            button_District12.BackColor = System.Drawing.SystemColors.Highlight;
+        }
+    }
+    private void chart1_Click(object sender, EventArgs e)
+    {
+
+
+    }
+
+    private void Locations_Load(object sender, EventArgs e)
+    {
+
+    }
     }
 }
