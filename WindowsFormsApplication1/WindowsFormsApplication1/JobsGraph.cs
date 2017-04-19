@@ -27,6 +27,8 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             label1.Text = "";
+            checkBox4.Enabled = false;
+            checkBox3.Enabled = false;
             // closed            
         }
         public Boolean chartvalues()
@@ -84,7 +86,7 @@ namespace WindowsFormsApplication1
             {
 
                 con.Open(); //open database connection
-                FDcommand = new SqlCommand("select uur, count(waarde) from fietsdiefstal WHERE uur >= " + minimumtime + " and uur <= " + maximumtime + "GROUP BY uur ORDER BY uur ASC;", con); // [Xvalue, Yvalue] = output query
+                FDcommand = new SqlCommand("select uur, count(waarde) from fietsdiefstal WHERE uur >= " + minimumtime + " and uur <= " + maximumtime + "AND plaats = 'Rotterdam' GROUP BY uur ORDER BY uur ASC;", con); // [Xvalue, Yvalue] = output query
                 FDreader = FDcommand.ExecuteReader(); // Make it readable
 
                 while (FDreader.Read()) // Read query
@@ -112,7 +114,7 @@ namespace WindowsFormsApplication1
             if (ShowStraatroof == true)
             {
                 con.Open();
-                SRcommand = new SqlCommand("select uur, count(waarde) from straatroof WHERE uur >= " + minimumtime + " and uur <= " + maximumtime + "GROUP BY uur ORDER BY uur ASC;", con);
+                SRcommand = new SqlCommand("select uur, count(waarde) from straatroof WHERE uur >= " + minimumtime + " and uur <= " + maximumtime + "AND plaats = 'Rotterdam' GROUP BY uur ORDER BY uur ASC;", con);
                 SRreader = SRcommand.ExecuteReader();
 
                 while (SRreader.Read())
@@ -133,7 +135,8 @@ namespace WindowsFormsApplication1
                 }
 
                 con.Close();
-
+                chart1.ChartAreas[0].AxisX.Maximum = maximumtime + 1;
+                chart1.ChartAreas[0].AxisX.Minimum = minimumtime - 1;
                 label1.Text = "";
             }
 
@@ -159,6 +162,21 @@ namespace WindowsFormsApplication1
             ShowYOnStraatroof = false;
             ToggleYvalues = 0;
             chartHasLoaded = false;
+            minimumtime = 1;
+            maximumtime = 24;
+        }
+        public void cleargraph()
+        {
+            foreach (var series in chart1.Series)
+            {
+                series.Points.Clear();
+            }
+            ShowYOnFietsdiefstal = false;
+            ShowYOnStraatroof = false;
+            ToggleYvalues = 0;
+            chartHasLoaded = false;
+            minimumtime = 1;
+            maximumtime = 24;
         }
         //y-as values
         private void button3_Click(object sender, EventArgs e)
@@ -222,9 +240,137 @@ namespace WindowsFormsApplication1
             chartHasLoaded = true;
             label1.Text = "";
         }
-
-        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        //minimum value
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            TextBox minTextBox = (TextBox)sender;
+            string minValue = minTextBox.Text;
+            GetInt(minValue);
+            minimumtime = GetInt(minValue);
+            loadgraph();
+        }
+        //maximum value
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            TextBox maxTextBox = (TextBox)sender;
+            
+            string maxValue =maxTextBox.Text;
+            GetInt(maxValue);
+            maximumtime = GetInt(maxValue);
+            loadgraph();
+
+        }
+        //straatroof check
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked) // check if straatroof is check
+            {
+                checkBox4.Enabled = true;
+                if (checkBox2.Checked) // check if fietsdiefstal is also checked
+                {
+                    ShowFietsdiefstal = true;
+                    ShowStraatroof = true;
+                    loadgraph();
+                    chartHasLoaded = true;
+                    label1.Text = "";
+                }
+                else // if fietsdiefstal is not checked only view straatroof
+                {
+                    ShowFietsdiefstal = false;
+                    ShowStraatroof = true;
+                    loadgraph();
+                    chartHasLoaded = true;
+                    label1.Text = "";
+                }
+                
+            }
+            else // if straatroof is not checked set showstraatroof to false
+            {
+                ShowStraatroof = false;
+                checkBox4.Enabled = false;
+                loadgraph();
+            }
+        }
+        //fietsdiefstal check
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked) // check if fietsdiefstal is check
+            {
+                checkBox3.Enabled = true;
+                if (checkBox1.Checked) // check if straatroof is also checked
+                {
+                    ShowFietsdiefstal = true;
+                    ShowStraatroof = true;
+                    loadgraph();
+                    chartHasLoaded = true;
+                    label1.Text = "";
+                }
+                else // if straatroof is not checked only view fietsdiefstal
+                {
+                    ShowFietsdiefstal = true;
+                    ShowStraatroof = false;
+                    loadgraph();
+                    chartHasLoaded = true;
+                    label1.Text = "";
+                }
+            }
+            else // if fietsdiefstal is not checked set showfietsdiefstal to false
+            {
+                ShowFietsdiefstal = false;
+                checkBox3.Enabled = false;
+                loadgraph();
+            }
+        }
+
+        private void JobsGraph_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e) //show y-axe on straatroof
+        {
+            if (checkBox1.Checked)
+            {
+                
+                if (checkBox4.Checked)
+                {
+
+                    ShowYOnStraatroof = true;
+                    loadgraph();
+
+                }
+                else
+                {
+                    ShowYOnStraatroof = false;
+                    loadgraph();
+
+                }
+            }
+            
+            
+
+        }
+        private void checkBox3_CheckedChanged(object sender, EventArgs e) //show y-axe on fietsdiefstal
+        {
+            if (checkBox2.Checked)
+            {
+
+                if (checkBox3.Checked)
+                {
+
+                    ShowYOnFietsdiefstal = true;
+                    loadgraph();
+
+                }
+                else
+                {
+                    ShowYOnFietsdiefstal = false;
+                    loadgraph();
+
+                }
+            }
 
         }
     }
