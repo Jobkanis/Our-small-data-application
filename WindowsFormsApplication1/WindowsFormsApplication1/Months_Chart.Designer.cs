@@ -45,14 +45,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label7 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(832, 190);
+            this.button1.Location = new System.Drawing.Point(1109, 234);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 23);
+            this.button1.Size = new System.Drawing.Size(132, 28);
             this.button1.TabIndex = 30;
             this.button1.Text = "Reset domain";
             this.button1.UseVisualStyleBackColor = true;
@@ -62,9 +64,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(802, 166);
+            this.label4.Location = new System.Drawing.Point(1069, 204);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.Size = new System.Drawing.Size(40, 17);
             this.label4.TabIndex = 29;
             this.label4.Text = "From";
             // 
@@ -72,9 +75,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(872, 166);
+            this.label3.Location = new System.Drawing.Point(1163, 204);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(16, 13);
+            this.label3.Size = new System.Drawing.Size(20, 17);
             this.label3.TabIndex = 28;
             this.label3.Text = "to";
             // 
@@ -82,9 +86,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(791, 147);
+            this.label2.Location = new System.Drawing.Point(1055, 181);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.Size = new System.Drawing.Size(60, 17);
             this.label2.TabIndex = 27;
             this.label2.Text = "Domain:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -93,9 +98,10 @@
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.BackColor = System.Drawing.Color.White;
-            this.checkBox4.Location = new System.Drawing.Point(872, 104);
+            this.checkBox4.Location = new System.Drawing.Point(1163, 128);
+            this.checkBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(88, 17);
+            this.checkBox4.Size = new System.Drawing.Size(113, 21);
             this.checkBox4.TabIndex = 26;
             this.checkBox4.Text = "Y-axe Values";
             this.checkBox4.UseVisualStyleBackColor = false;
@@ -105,9 +111,10 @@
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.BackColor = System.Drawing.Color.White;
-            this.checkBox3.Location = new System.Drawing.Point(872, 127);
+            this.checkBox3.Location = new System.Drawing.Point(1163, 156);
+            this.checkBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(88, 17);
+            this.checkBox3.Size = new System.Drawing.Size(113, 21);
             this.checkBox3.TabIndex = 25;
             this.checkBox3.Text = "Y-axe Values";
             this.checkBox3.UseVisualStyleBackColor = false;
@@ -117,9 +124,10 @@
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.BackColor = System.Drawing.Color.White;
-            this.checkBox2.Location = new System.Drawing.Point(794, 127);
+            this.checkBox2.Location = new System.Drawing.Point(1059, 156);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(81, 17);
+            this.checkBox2.Size = new System.Drawing.Size(105, 21);
             this.checkBox2.TabIndex = 24;
             this.checkBox2.Text = "Fietsdiefstal";
             this.checkBox2.UseVisualStyleBackColor = false;
@@ -129,9 +137,10 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.BackColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(794, 104);
+            this.checkBox1.Location = new System.Drawing.Point(1059, 128);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(72, 17);
+            this.checkBox1.Size = new System.Drawing.Size(93, 21);
             this.checkBox1.TabIndex = 23;
             this.checkBox1.Text = "Straatroof";
             this.checkBox1.UseVisualStyleBackColor = false;
@@ -139,26 +148,29 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(897, 163);
+            this.textBox1.Location = new System.Drawing.Point(1196, 201);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(34, 20);
+            this.textBox1.Size = new System.Drawing.Size(44, 22);
             this.textBox1.TabIndex = 22;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(832, 163);
+            this.textBox2.Location = new System.Drawing.Point(1109, 201);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(34, 20);
+            this.textBox2.Size = new System.Drawing.Size(44, 22);
             this.textBox2.TabIndex = 21;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged_1);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(394, 188);
+            this.label1.Location = new System.Drawing.Point(525, 231);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.Size = new System.Drawing.Size(105, 17);
             this.label1.TabIndex = 20;
             this.label1.Text = "warningbutton3";
             // 
@@ -182,7 +194,8 @@
             this.chart1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(-41, 35);
+            this.chart1.Location = new System.Drawing.Point(-55, 43);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -192,7 +205,7 @@
             series2.Name = "Straatroof";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(1001, 435);
+            this.chart1.Size = new System.Drawing.Size(1335, 535);
             this.chart1.TabIndex = 19;
             this.chart1.Text = "chart1";
             // 
@@ -200,19 +213,31 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 15);
+            this.label7.Location = new System.Drawing.Point(16, 18);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(487, 16);
+            this.label7.Size = new System.Drawing.Size(623, 20);
             this.label7.TabIndex = 36;
             this.label7.Text = "Reported crimes between 1 jan 2011 - 31 dec 2012 in Rotterdam shown per month";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1150, 485);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 37;
+            this.button2.Text = "<-- Back";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Months_Chart
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(972, 468);
+            this.ClientSize = new System.Drawing.Size(1296, 576);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -226,6 +251,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chart1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Months_Chart";
             this.Text = "Monthly Chart";
             this.Load += new System.EventHandler(this.JonahsGraph_Load);
@@ -250,5 +276,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button2;
     }
 }

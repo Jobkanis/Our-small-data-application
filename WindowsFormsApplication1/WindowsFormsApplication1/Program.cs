@@ -16,9 +16,7 @@ namespace WindowsFormsApplication1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Locations_Chart());
-            Application.Run(new Hours_Chart());
-            Application.Run(new Months_Chart());
+            Application.Run(new GUI());
 
         }
     }
