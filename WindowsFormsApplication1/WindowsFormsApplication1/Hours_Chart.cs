@@ -51,7 +51,7 @@ namespace WindowsFormsApplication1
             // Job : string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Oguzhan :string databaseplace = "C:\\Users\\Oguzhan\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
             // Dion: string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
-            string databaseplace = "C:\\Users\\Oguzhan\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
+            string databaseplace = "C:\\Users\\jobka\\Documents\\GitHub\\Project3\\WindowsFormsApplication1\\WindowsFormsApplication1\\Official_Database.mdf";
 
             SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + databaseplace + ";Integrated Security=True"); //Connection with database
 
@@ -124,10 +124,11 @@ namespace WindowsFormsApplication1
                 }
 
                 con.Close();
-                chart1.ChartAreas[0].AxisX.Maximum = maximumtime + 1;
-                chart1.ChartAreas[0].AxisX.Minimum = minimumtime - 1;
-                label1.Text = "";
+
             }
+            chart1.ChartAreas[0].AxisX.Maximum = maximumtime + 1;
+            chart1.ChartAreas[0].AxisX.Minimum = minimumtime - 1;
+            label1.Text = "";
 
         } 
         private int GetInt(string value) // Converts string to int

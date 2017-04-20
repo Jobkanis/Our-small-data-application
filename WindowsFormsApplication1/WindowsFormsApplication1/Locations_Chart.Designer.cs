@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.button_District12 = new System.Windows.Forms.Button();
             this.button_District10 = new System.Windows.Forms.Button();
             this.button_District9 = new System.Windows.Forms.Button();
@@ -56,10 +56,10 @@
             // button_District12
             // 
             this.button_District12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_District12.Location = new System.Drawing.Point(413, 346);
-            this.button_District12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_District12.Location = new System.Drawing.Point(310, 281);
+            this.button_District12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_District12.Name = "button_District12";
-            this.button_District12.Size = new System.Drawing.Size(144, 25);
+            this.button_District12.Size = new System.Drawing.Size(108, 20);
             this.button_District12.TabIndex = 9;
             this.button_District12.Text = "Rotterdam Centrum";
             this.button_District12.UseVisualStyleBackColor = true;
@@ -68,10 +68,10 @@
             // button_District10
             // 
             this.button_District10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_District10.Location = new System.Drawing.Point(376, 619);
-            this.button_District10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_District10.Location = new System.Drawing.Point(282, 503);
+            this.button_District10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_District10.Name = "button_District10";
-            this.button_District10.Size = new System.Drawing.Size(144, 27);
+            this.button_District10.Size = new System.Drawing.Size(108, 22);
             this.button_District10.TabIndex = 8;
             this.button_District10.Text = "Rotterdam-Zuid";
             this.button_District10.UseVisualStyleBackColor = true;
@@ -80,10 +80,10 @@
             // button_District9
             // 
             this.button_District9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_District9.Location = new System.Drawing.Point(640, 572);
-            this.button_District9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_District9.Location = new System.Drawing.Point(480, 465);
+            this.button_District9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_District9.Name = "button_District9";
-            this.button_District9.Size = new System.Drawing.Size(144, 26);
+            this.button_District9.Size = new System.Drawing.Size(108, 21);
             this.button_District9.TabIndex = 7;
             this.button_District9.Text = "Feyenoord";
             this.button_District9.UseVisualStyleBackColor = true;
@@ -92,10 +92,10 @@
             // button_District5
             // 
             this.button_District5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_District5.Location = new System.Drawing.Point(323, 199);
-            this.button_District5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_District5.Location = new System.Drawing.Point(242, 162);
+            this.button_District5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_District5.Name = "button_District5";
-            this.button_District5.Size = new System.Drawing.Size(144, 25);
+            this.button_District5.Size = new System.Drawing.Size(108, 20);
             this.button_District5.TabIndex = 5;
             this.button_District5.Text = "De Noordhoek";
             this.button_District5.UseVisualStyleBackColor = true;
@@ -104,10 +104,10 @@
             // button_District3
             // 
             this.button_District3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_District3.Location = new System.Drawing.Point(213, 436);
-            this.button_District3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_District3.Location = new System.Drawing.Point(160, 354);
+            this.button_District3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_District3.Name = "button_District3";
-            this.button_District3.Size = new System.Drawing.Size(144, 25);
+            this.button_District3.Size = new System.Drawing.Size(108, 20);
             this.button_District3.TabIndex = 3;
             this.button_District3.Text = "Rotterdam-West";
             this.button_District3.UseVisualStyleBackColor = true;
@@ -116,10 +116,10 @@
             // button_District6
             // 
             this.button_District6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_District6.Location = new System.Drawing.Point(623, 290);
-            this.button_District6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_District6.Location = new System.Drawing.Point(467, 236);
+            this.button_District6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_District6.Name = "button_District6";
-            this.button_District6.Size = new System.Drawing.Size(144, 25);
+            this.button_District6.Size = new System.Drawing.Size(108, 20);
             this.button_District6.TabIndex = 4;
             this.button_District6.Text = "District Oost";
             this.button_District6.UseVisualStyleBackColor = true;
@@ -129,38 +129,37 @@
             // 
             this.chart1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.chart1.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Top;
-            chartArea2.AxisX.IsStartedFromZero = false;
-            chartArea2.AxisX.LabelStyle.Interval = 1D;
-            chartArea2.AxisX.Maximum = 9D;
-            chartArea2.AxisX.Minimum = 0D;
-            chartArea2.AxisX.ScaleBreakStyle.MaxNumberOfBreaks = 1;
-            chartArea2.AxisX.ScaleView.MinSizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea2.AxisX.ScaleView.SizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea2.AxisX.Title = "Districts of Rotterdam";
-            chartArea2.AxisY.Title = "Reported crimes";
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.IsStartedFromZero = false;
+            chartArea1.AxisX.LabelStyle.Interval = 1D;
+            chartArea1.AxisX.Maximum = 9D;
+            chartArea1.AxisX.Minimum = 0D;
+            chartArea1.AxisX.ScaleBreakStyle.MaxNumberOfBreaks = 1;
+            chartArea1.AxisX.ScaleView.MinSizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.AxisX.ScaleView.SizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.AxisX.Title = "Districts of Rotterdam";
+            chartArea1.AxisY.Title = "Reported crimes";
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Cursor = System.Windows.Forms.Cursors.Default;
             this.chart1.Enabled = false;
             this.chart1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(859, 146);
-            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(644, 119);
             this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Fietsdiefstal";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Straatroof";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Total";
-            this.chart1.Series.Add(series4);
-            this.chart1.Series.Add(series5);
-            this.chart1.Series.Add(series6);
-            this.chart1.Size = new System.Drawing.Size(1224, 522);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Fietsdiefstal";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Straatroof";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Total";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(918, 424);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
             // 
@@ -169,10 +168,9 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(1911, 271);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox1.Location = new System.Drawing.Point(1401, 229);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(93, 21);
+            this.checkBox1.Size = new System.Drawing.Size(72, 17);
             this.checkBox1.TabIndex = 14;
             this.checkBox1.Text = "Straatroof";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -183,10 +181,9 @@
             this.checkBox4.AutoSize = true;
             this.checkBox4.Checked = true;
             this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox4.Location = new System.Drawing.Point(2015, 271);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox4.Location = new System.Drawing.Point(1479, 229);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(113, 21);
+            this.checkBox4.Size = new System.Drawing.Size(88, 17);
             this.checkBox4.TabIndex = 15;
             this.checkBox4.Text = "Y-axe Values";
             this.checkBox4.UseVisualStyleBackColor = true;
@@ -197,10 +194,9 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(1911, 242);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox2.Location = new System.Drawing.Point(1401, 206);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(105, 21);
+            this.checkBox2.Size = new System.Drawing.Size(81, 17);
             this.checkBox2.TabIndex = 16;
             this.checkBox2.Text = "Fietsdiefstal";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -211,10 +207,9 @@
             this.checkBox3.AutoSize = true;
             this.checkBox3.Checked = true;
             this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point(2015, 242);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox3.Location = new System.Drawing.Point(1479, 206);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(113, 21);
+            this.checkBox3.Size = new System.Drawing.Size(88, 17);
             this.checkBox3.TabIndex = 17;
             this.checkBox3.Text = "Y-axe Values";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -223,10 +218,9 @@
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(1911, 299);
-            this.checkBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox5.Location = new System.Drawing.Point(1401, 252);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(62, 21);
+            this.checkBox5.Size = new System.Drawing.Size(50, 17);
             this.checkBox5.TabIndex = 18;
             this.checkBox5.Text = "Total";
             this.checkBox5.UseVisualStyleBackColor = true;
@@ -238,10 +232,9 @@
             this.checkBox6.Checked = true;
             this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox6.Enabled = false;
-            this.checkBox6.Location = new System.Drawing.Point(2015, 299);
-            this.checkBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox6.Location = new System.Drawing.Point(1479, 252);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(113, 21);
+            this.checkBox6.Size = new System.Drawing.Size(88, 17);
             this.checkBox6.TabIndex = 19;
             this.checkBox6.Text = "Y-axe Values";
             this.checkBox6.UseVisualStyleBackColor = true;
@@ -251,10 +244,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(983, 123);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(737, 100);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(575, 20);
+            this.label1.Size = new System.Drawing.Size(448, 16);
             this.label1.TabIndex = 20;
             this.label1.Text = "Reported crimes between 1 jan 2011 - 31 dec 2012 per district in Rotterdam";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -262,18 +254,18 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::WindowsFormsApplication1.Properties.Resources.MapRotterdam;
-            this.pictureBox1.Location = new System.Drawing.Point(40, 63);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(30, 51);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(825, 713);
+            this.pictureBox1.Size = new System.Drawing.Size(619, 579);
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1095, 753);
+            this.button1.Location = new System.Drawing.Point(821, 612);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(56, 19);
             this.button1.TabIndex = 21;
             this.button1.Text = "<-- Back";
             this.button1.UseVisualStyleBackColor = true;
@@ -281,10 +273,10 @@
             // 
             // Locations_Chart
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1914, 881);
+            this.ClientSize = new System.Drawing.Size(1625, 699);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBox6);
@@ -301,7 +293,6 @@
             this.Controls.Add(this.button_District5);
             this.Controls.Add(this.button_District3);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Locations_Chart";
             this.Text = "Locations";
             this.Load += new System.EventHandler(this.Locations_Load);
